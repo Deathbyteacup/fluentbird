@@ -62,8 +62,9 @@ Setup Instructions
    - Locate your Thunderbird profile folder:
      - On Windows: `%APPDATA%\Thunderbird\Profiles\xxxxxxxx.default`
      - On Linux/Mac: `~/.thunderbird/xxxxxxxx.default`
-   - Place the entire `chrome` folder inside this profile directory.
-
+   - Create a new directory named `chrome` inside this profile directory, it it does not already exist
+   - Place userChrome.css and the icon folders into your 'chrome' directory
+   
 5. Restart Thunderbird.
 
 ---------------------------------------------------------------
