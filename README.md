@@ -42,8 +42,9 @@ Setup Instructions
 1. Enable userChrome.css
    - Open Thunderbird  
    - Go to **Settings** > **General**  
-   - Scroll down to **Language & Appearance**  
-   - Check the box **“Enable userChrome.css”** (it may appear as “Enable legacy user profile customizations” depending on your version)  
+   - Click **Config Editor…** under **Advanced**  
+   - Search for `toolkit.legacyUserProfileCustomizations.stylesheets`  
+   - Set it to `true`  
    - Restart Thunderbird
 
 2. Enable the Mica flags in Thunderbird’s (Firefox-based) advanced configuration:  
