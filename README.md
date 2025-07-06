@@ -39,24 +39,31 @@ Copyright (c) Microsoft Corporation.
 Setup Instructions
 ------------------
 
-1. Enable the Mica flags in Thunderbird’s (Firefox-based) advanced configuration:  
+1. Enable userChrome.css
+- Open Thunderbird  
+- Go to **Settings** > **General**  
+- Scroll down to **Language & Appearance**  
+- Check the box **“Enable userChrome.css”** (it may appear as “Enable legacy user profile customizations” depending on your version)  
+- Restart Thunderbird
+
+2. Enable the Mica flags in Thunderbird’s (Firefox-based) advanced configuration:  
    - Open Thunderbird  
    - Go to **Settings** > **General**  
    - Scroll down and click **Config Editor…** under **Advanced**  
    - In the search bar, type `widget.windows.mica` and set it to `true`  
    - Search for `widget.windows.mica.popups` and set it to `2`
 
-2. Make sure no other theme is selected in Thunderbird settings.
+3. Make sure no other theme is selected in Thunderbird settings.
    *Do not* select Light, Dark, or any theme from the Thunderbird extension store.
    The theme must be set to "System Theme" or simply unselected.
 
-3. Copy the included `chrome` folder to your Thunderbird profile directory:
+4. Copy the included `chrome` folder to your Thunderbird profile directory:
    - Locate your Thunderbird profile folder:
      - On Windows: `%APPDATA%\Thunderbird\Profiles\xxxxxxxx.default`
      - On Linux/Mac: `~/.thunderbird/xxxxxxxx.default`
    - Place the entire `chrome` folder inside this profile directory.
 
-4. Restart Thunderbird.
+5. Restart Thunderbird.
 
 ---------------------------------------------------------------
 
