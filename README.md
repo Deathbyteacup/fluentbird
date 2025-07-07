@@ -22,12 +22,14 @@ Features
 - Supports both dark and light modes (system theme)
 - Enhances and highlights Mica transparency on Windows 11 systems
 
-Release Notes
+0.1.1 Release Notes
 --------
-- This is the initial release of FluentBird
-- Not yet fully tested; bug reports welcome via the GitHub repository
-- Untested on Mac and Linux. It should work on these platforms, 
-  but will not support Mica/transparency
+This is a hotfix release to address some initial reported bugs;
+
+- Fixed an issue where, in grouped cards view, the first card in the chain rendered incorrectly
+- Fixed an issue where the titlebar buttons would have a large black box around them on Linux systems
+- Fixed an issue where the filter and list display icons were too dark to see on Dark mode
+- Fluent icons have been added for the Archive and Outbox local folders
 
 Credits
 --------
