@@ -7,6 +7,7 @@
 FluentBird is a userChrome.css theme for Mozilla Thunderbird, that implemenets Windows 11 Fluent Design and Mica transparency materials.
 
 Created by Danny King - www.dannyking.co.uk
+
 Released under the MIT License
 
 <p align="center">
@@ -58,7 +59,7 @@ Setup Instructions
    *Do not* select Light, Dark, or any theme from the Thunderbird extension store.
    The theme must be set to "System Theme" or simply unselected.
 
-4. Copy the included `chrome` folder to your Thunderbird profile directory:
+4. Copy the included files to the `chrome` folder in your Thunderbird profile directory:
    - Locate your Thunderbird profile folder:
      - On Windows: `%APPDATA%\Thunderbird\Profiles\xxxxxxxx.default`
      - On Linux/Mac: `~/.thunderbird/xxxxxxxx.default`
@@ -85,5 +86,3 @@ Also, note that some areas of ThunderBird are rendered outside of the influence 
 
 Questions?  
 Check the GitHub repo or open an issue there. Enjoy!
-
-===============================================================
