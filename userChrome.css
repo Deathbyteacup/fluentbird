@@ -82,22 +82,27 @@ global-search-bar {
 	font-size: 0.96rem !important;
 }
 
-.card-layout.children {
-	height: 30px !important;
+tree-view[data-show-grouped-by-sort="true"] .card-layout.children {
+  height: 30px !important;
 }
 
-.card-layout.children *,
-.card-layout.children:hover,
-.card-layout.children *:hover {
-	background: none !important;
-	background-color: transparent !important;
-	box-shadow: none !important;
-	border-color: transparent !important;
-	color: inherit !important;
-	filter: none !important;
-	outline: none !important;
-	text-decoration: none !important;
-	transition: none !important;
+tree-view[data-show-grouped-by-sort="true"] .card-layout.children *,
+tree-view[data-show-grouped-by-sort="true"] .card-layout.children:hover,
+tree-view[data-show-grouped-by-sort="true"] .card-layout.children *:hover {
+  background: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+  color: inherit !important;
+  filter: none !important;
+  outline: none !important;
+  text-decoration: none !important;
+  transition: none !important;
+}
+
+
+button.thread-card-button:has(> span.thread-replies) {
+display: none !important;
 }
 
 .button.button-flat.button-reset.twisty.thread-card-button {
