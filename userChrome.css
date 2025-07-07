@@ -828,4 +828,12 @@ tr.card-layout.children span.subject {
 		background-color: #262629b8 !important;
 	}
 
+	#threadPaneQuickFilterButton {
+		background-image: url("Icons/filter-dark.svg") !important;
+	}
+
+	#threadPaneDisplayButton {
+		background-image: url("Icons/list-dark.svg") !important;
+	}
+
 }
