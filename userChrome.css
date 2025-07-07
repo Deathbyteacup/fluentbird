@@ -426,6 +426,22 @@ tr.card-layout.children span.subject {
 	background-color: #8785a3 !important;
 }
 
+#folderTree li[data-folder-type="archive"]>.container>.icon {
+	mask-image: url("Icons/archive.svg") !important;
+	mask-repeat: no-repeat !important;
+	mask-size: 16px 16px !important;
+	mask-position: center !important;
+	background-color: #8785a3 !important;
+}
+
+#folderTree li[data-folder-type="outbox"]>.container>.icon {
+	mask-image: url("Icons/outbox.svg") !important;
+	mask-repeat: no-repeat !important;
+	mask-size: 16px 16px !important;
+	mask-position: center !important;
+	background-color: #6aadb5 !important;
+}
+
 #folderTree li:not([data-folder-type])>.container>.icon {
 	mask-image: url("Icons/folder.svg") !important;
 	mask-repeat: no-repeat !important;
