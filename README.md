@@ -28,7 +28,7 @@ This is a hotfix release to address some initial reported bugs;
 
 - Fixed an issue where, in grouped cards view, the first card in the chain rendered incorrectly
 - Fixed an issue where the titlebar buttons would have a large black box around them on Linux systems
-- Fixed an issue where the filter and list display icons were too dark to see on Dark mode
+- Fixed an issue where the filter and list display icons weren't easily visible in dark mode
 - Fluent icons have been added for the Archive and Outbox local folders
 
 Credits
