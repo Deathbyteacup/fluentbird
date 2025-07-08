@@ -101,10 +101,6 @@ tree-view[data-show-grouped-by-sort="true"] .card-layout.children *:hover {
 }
 
 
-button.thread-card-button:has(> span.thread-replies) {
-display: none !important;
-}
-
 .button.button-flat.button-reset.twisty.thread-card-button {
 	margin-top: -38px !important;
 }
@@ -758,35 +754,43 @@ tr.card-layout.children span.subject {
 	/* assuming _ was a placeholder */
 }
 
+@media (-moz-platform: windows) {
+	/* Make all titlebar buttons exactly 28px tall */
+	:root[customtitlebar] .titlebar-button,
+	:root[customtitlebar] #titlebar-min,
+	:root[customtitlebar] #titlebar-max,
+	:root[customtitlebar] #titlebar-close {
+		height: 29px !important;
+	}
+	
+	/* Override the close button hover to use #c42b1c */
+	:root[customtitlebar] .titlebar-close:hover {
+		background-color: #c42b1c !important;
+		stroke: white !important;
+	}
 
-:root:-moz-platform(windows)[customtitlebar] .titlebar-button,
-:root:-moz-platform(windows)[customtitlebar] #titlebar-min,
-:root:-moz-platform(windows)[customtitlebar] #titlebar-max,
-:root:-moz-platform(windows)[customtitlebar] #titlebar-close {
-	height: 29px !important;
-}
+/* Replace the maximize icon with custom SVG */
+	.titlebar-max {
+		-moz-default-appearance: -moz-window-button-maximize;
+		list-style-image: url("Titlebar_Icons/maximize-light.png") !important;
+		opacity: 0.9 !important;
 
-:root:-moz-platform(windows)[customtitlebar] .titlebar-close:hover {
-	background-color: #c42b1c !important;
-	stroke: white !important;
-}
-
-:root:-moz-platform(windows) .titlebar-max {
-	-moz-default-appearance: -moz-window-button-maximize;
-	list-style-image: url("Titlebar_Icons/maximize-light.png") !important;
-	opacity: 0.9 !important;
+	}
 }
 
 
 /* DARK MODE */
 @media (prefers-color-scheme: dark) {
 
+@media (-moz-platform: windows) {
 	/* Replace the maximize icon with custom SVG */
-	:root:-moz-platform(windows) .titlebar-max {
+	.titlebar-max {
 		-moz-default-appearance: -moz-window-button-maximize;
 		list-style-image: url("Titlebar_Icons/maximize-dark.png") !important;
 		opacity: 0.9 !important;
+
 	}
+}
 
 
 	:is(ul, ol)[role="tree"] li.selected.current>.container {
