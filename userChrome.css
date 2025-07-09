@@ -22,7 +22,6 @@
 	border-bottom: 0px solid rgba(0, 0, 0, 0.15) !important;
 }
 
-
 #tabs-toolbar {
 	background-color: #fff0 !important;
 	background-image: none !important;
@@ -777,6 +776,10 @@ tr.card-layout.children span.subject {
 	stroke: #16a34a00 !important;
 	margin-left: 0 !important;
 	/* assuming _ was a placeholder */
+}
+
+tr.table-layout.selected.current {
+	color: #45a0ef !important;
 }
 
 @media (-moz-platform: windows) {
