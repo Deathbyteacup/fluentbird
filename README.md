@@ -27,7 +27,7 @@ Features
 This release fixes a number of reported bugs;
 
 - Fix an issue where the intended titlebar icons were not applying on Windows
-- Implemeent a collapse / hide of a mail thread / threadview that is sympathetic to the new card design.
+- Implemented a collapse / hide of a mail thread / threadview that is sympathetic to the new card design.
 - Fixes an issue with the "options" button on the privacy notification in dark mode that made the text white and unreadable.
 - Restores the favourites button and tags label to card view.
 
