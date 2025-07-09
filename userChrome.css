@@ -131,7 +131,7 @@ tree-view[data-show-grouped-by-sort="true"] .card-layout.children *:hover {
 }
 
 .thread-card-icon-info {
-	display: none !important;
+	margin-top: -15px;
 }
 
 & .card-container .sender {
