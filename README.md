@@ -31,8 +31,8 @@ This is a hotfix for 0.1.2 beta;
 0.1.2 Release Notes
 --------
 
-- Fix an issue where the intended titlebar icons were not applying on Windows
-- Implemeent a collapse / hide of a mail thread / threadview that is sympathetic to the new card design.
+- Fixes an issue where the intended titlebar icons were not applying on Windows
+- Implemented collapse / restore of a mail thread when in threadview, that is sympathetic to the new card design.
 - Fixes an issue with the "options" button on the privacy notification in dark mode that made the text white and unreadable.
 - Restores the favourites button and tags label to card view.
 
