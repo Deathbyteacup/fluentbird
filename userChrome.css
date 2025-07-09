@@ -810,15 +810,27 @@ tr.table-layout.selected.current {
 /* DARK MODE */
 @media (prefers-color-scheme: dark) {
 
-@media (-moz-platform: windows) {
-	/* Replace the maximize icon with custom SVG */
-	.titlebar-max {
-		-moz-default-appearance: -moz-window-button-maximize;
-		list-style-image: url("Titlebar_Icons/maximize-dark.png") !important;
-		opacity: 0.9 !important;
+	@media (-moz-platform: windows) {
 
+		/* Replace the maximize icon with custom SVG */
+		.titlebar-max {
+			-moz-default-appearance: -moz-window-button-maximize;
+			list-style-image: url("Titlebar_Icons/maximize-dark.png") !important;
+			opacity: 0.9 !important;
+
+		}
 	}
-}
+
+	.notification-button .button-text,
+	.notification-button .button-icon {
+	  color: black !important;
+	  fill: black !important;  
+	  filter: none !important;    
+	  opacity: 1 !important;   
+	}
+	.notification-button.button-menu-list {
+	  stroke: #000 !important;
+	}
 
 
 	:is(ul, ol)[role="tree"] li.selected.current>.container {
