@@ -84,7 +84,7 @@ button .thread-replies {
 	display: none;
 }
 
-.thread-card-button:has(.thread-replies[data-l10n-id]) ~ .thread-card-subject-container .subject {
+tr.children .thread-card-button:has(.thread-replies[data-l10n-id]) ~ .thread-card-subject-container .subject {
   margin-left: 15px !important;
 }
 
