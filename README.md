@@ -30,7 +30,7 @@ Features
 --------
 This is a hotfix for 0.1.2 beta;
 
-- Fixes a bug introduced by release 1.2.2 that causes the subject line to be indented on the card in non-threaded view
+- Fixes a bug introduced by release 0.1.2 that causes the subject line to be indented on the card in non-threaded view
 
 0.1.2 Release Notes
 --------
