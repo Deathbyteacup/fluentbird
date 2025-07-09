@@ -77,6 +77,31 @@ global-search-bar {
 	margin-top: 8px !important;
 }
 
+button .replies-icon {
+	display: none !important;
+}
+
+button .thread-replies {
+	display: none;
+}
+
+.thread-card-button:has(.thread-replies[data-l10n-id]) ~ .thread-card-subject-container .subject {
+  margin-left: 15px !important;
+}
+
+.thread-card-dynamic-row > .thread-card-button {
+  align-self: end !important;
+}
+
+
+
+.thread-card-dynamic-row {
+  gap: 0px !important;
+  row-gap: 0px !important;
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+}
+
 .thread-card-subject-container {
 	color: #606060;
 	font-size: 0.96rem !important;
