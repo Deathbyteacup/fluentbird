@@ -2,7 +2,7 @@
 
 <p align="center">
   <picture>
-    <source srcset="https://www.dannyking.co.uk/github/fluentbird-logo-dark.png" media="(prefers-color-scheme: dark)">
+    <source srcset="https://www.dannyking.co.uk/github/fluentbird-logo dark.png" media="(prefers-color-scheme: dark)">
     <source srcset="https://www.dannyking.co.uk/github/fluentbird-logo.png" media="(prefers-color-scheme: light)">
     <img src="https://www.dannyking.co.uk/github/fluentbird-logo.png" alt="FluentBird Logo" style="width:50%;">
   </picture>
