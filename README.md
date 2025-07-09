@@ -22,12 +22,17 @@ Features
 - Supports both dark and light modes (system theme)
 - Enhances and highlights Mica transparency on Windows 11 systems
 
+0.1.3 Release Notes
+--------
+This is a hotfix for 0.1.2 beta;
+
+- Fixes a bug introduced by release 1.2.2 that causes the subject line to be indented on the card in non-threaded view
+
 0.1.2 Release Notes
 --------
-This release fixes a number of reported bugs;
 
 - Fix an issue where the intended titlebar icons were not applying on Windows
-- Implemented a collapse / hide of a mail thread / threadview that is sympathetic to the new card design.
+- Implemeent a collapse / hide of a mail thread / threadview that is sympathetic to the new card design.
 - Fixes an issue with the "options" button on the privacy notification in dark mode that made the text white and unreadable.
 - Restores the favourites button and tags label to card view.
 
