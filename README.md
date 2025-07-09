@@ -1,7 +1,11 @@
 # FluentBird
 
 <p align="center">
-  <img src="https://www.dannyking.co.uk/github/fluentbird-logo.png" alt="FluentBird Logo" style="width:50%;">
+  <picture>
+    <source srcset="https://www.dannyking.co.uk/github/fluentbird-logo-dark.png" media="(prefers-color-scheme: dark)">
+    <source srcset="https://www.dannyking.co.uk/github/fluentbird-logo.png" media="(prefers-color-scheme: light)">
+    <img src="https://www.dannyking.co.uk/github/fluentbird-logo.png" alt="FluentBird Logo" style="width:50%;">
+  </picture>
 </p>
 
 FluentBird is a userChrome.css theme for Mozilla Thunderbird, that implemenets Windows 11 Fluent Design and Mica transparency materials.
