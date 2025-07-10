@@ -843,6 +843,16 @@ tr.table-layout.selected.current {
 		}
 	}
 
+	.toolbarbutton-1:hover {
+		background-color: #272727 !important;
+	}
+
+
+	.thread-card-subject-container {
+		color: #d1d1d1;
+		font-size: 0.96rem !important;
+	}
+
 	.notification-button .button-text,
 	.notification-button .button-icon {
 	  color: black !important;
