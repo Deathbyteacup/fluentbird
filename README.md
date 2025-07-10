@@ -26,8 +26,8 @@ Features
 - Supports both dark and light modes (system theme)
 - Enhances and highlights Mica transparency on Windows 11 systems
 
-0.1.4 patch notes;
-
+0.1.4 Release Notes
+--------
 - Adds Fluent icons and correct button styling for the "Reply List" button
 - Fixes button hover colour in Dark Mode
 - Fixes subject line colour on card view in Dark Mode
