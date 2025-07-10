@@ -828,6 +828,9 @@ tr.table-layout.selected.current {
 	}
 }
 
+.thread-card-subject-container {
+	width: 85%;
+}
 
 /* DARK MODE */
 @media (prefers-color-scheme: dark) {
