@@ -1,7 +1,8 @@
 /* FLUENTBIRD - A FLUENT DESIGN THEME FOR THUNDERBIRD */
 /*     Created by Danny King - www.dannyking.co.uk    */
-/*    				 INTERNAL VERSION				  */
+/*    				 VERSION 0.1.4 BETA				  */
 /*			 DISTRIBUTED UNDER THE MIT LICENSE		  */
+
 
 
 #spacesToolbar {
@@ -233,8 +234,17 @@ ol[role="tree"] .container .twisty {
 }
 
 #hdrReplyAllButton .toolbarbutton-menubutton-button,
-#hdrReplyAllButton .toolbarbutton-menubutton-dropmarker {
+#hdrReplyAllButton .toolbarbutton-menubutton-dropmarker
+#hdrReplyListButton .toolbarbutton-menubutton-button,
+#hdrReplyListButton .toolbarbutton-menubutton-dropmarker,
+#hdrReplyListButton {
 	border-color: #ececee !important;
+}
+
+#hdrReplyListButton .toolbarbutton-menubutton-button,
+#hdrReplyListButton .toolbarbutton-menubutton-dropmarker {
+  border: 1px solid #ececee !important;
+  box-sizing: border-box !important;
 }
 
 
@@ -507,6 +517,18 @@ tr.card-layout.children span.subject {
 	mask-size: 16px 16px !important;
 	mask-position: center !important;
 	background-color: #b566bf !important;
+	width: 16px !important;
+	height: 16px !important;
+}
+
+#hdrReplyListButton .toolbarbutton-icon {
+	list-style-image: none !important;
+	/* kill theme icon */
+	mask-image: url("Icons/list-reply.svg") !important;
+	mask-repeat: no-repeat !important;
+	mask-size: 16px 16px !important;
+	mask-position: center !important;
+	background-color: #1e8bcd !important;
 	width: 16px !important;
 	height: 16px !important;
 }
@@ -856,10 +878,18 @@ tr.table-layout.selected.current {
 	}
 
 	#hdrReplyAllButton .toolbarbutton-menubutton-button,
-	#hdrReplyAllButton .toolbarbutton-menubutton-dropmarker {
+	#hdrReplyAllButton .toolbarbutton-menubutton-dropmarker,
+	#hdrReplyListButton .toolbarbutton-menubutton-button,
+	#hdrReplyListButton .toolbarbutton-menubutton-dropmarker {
 		border-color: #1f1f1f !important;
 	}
-
+	
+	#hdrReplyListButton .toolbarbutton-menubutton-button,
+	#hdrReplyListButton .toolbarbutton-menubutton-dropmarker {
+	  border: 1px solid #1f1f1f !important;
+	  box-sizing: border-box !important;
+	}
+	
 	.toolbarbutton-1 {
 		background-color: #3a3a3a !important;
 	}
