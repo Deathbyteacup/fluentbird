@@ -1,8 +1,7 @@
 /* FLUENTBIRD - A FLUENT DESIGN THEME FOR THUNDERBIRD */
 /*     Created by Danny King - www.dannyking.co.uk    */
-/*    				 VERSION 0.1.4 BETA				  */
-/*			 DISTRIBUTED UNDER THE MIT LICENSE		  */
-
+/*    	               v0.1.5 BETA                    */
+/* 	       DISTRIBUTED UNDER THE MIT LICENSE	      */
 
 
 #spacesToolbar {
@@ -804,6 +803,10 @@ tr.table-layout.selected.current {
 	color: #45a0ef !important;
 }
 
+.thread-card-subject-container {
+	width: 85%;
+}
+
 @media (-moz-platform: windows) {
 	/* Make all titlebar buttons exactly 28px tall */
 	:root[customtitlebar] .titlebar-button,
@@ -828,9 +831,6 @@ tr.table-layout.selected.current {
 	}
 }
 
-.thread-card-subject-container {
-	width: 85%;
-}
 
 /* DARK MODE */
 @media (prefers-color-scheme: dark) {
@@ -846,10 +846,13 @@ tr.table-layout.selected.current {
 		}
 	}
 
+	#placeholderNoMessages::before {
+	background-image: url("Icons/mail-dark.svg") !important;
+	}
+	
 	.toolbarbutton-1:hover {
 		background-color: #272727 !important;
 	}
-
 
 	.thread-card-subject-container {
 		color: #d1d1d1;
