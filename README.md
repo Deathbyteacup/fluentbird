@@ -26,6 +26,13 @@ Features
 - Supports both dark and light modes (system theme)
 - Enhances and highlights Mica transparency on Windows 11 systems
 
+This will likely be the last beta release, unless more issues are raised, with 1.0 release to occur alongside Thunderbird 141.
+
+0.1.5 Release Notes
+--------
+- Improves the "no messages" envolope graphic in dark mode.
+- Fixes the subject line clashing with the star / tags icons in card view.
+
 0.1.4 Release Notes
 --------
 - Adds Fluent icons and correct button styling for the "Reply List" button
