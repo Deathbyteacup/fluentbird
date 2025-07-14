@@ -70,11 +70,10 @@ Setup Instructions
    The theme must be set to "System Theme" or simply unselected.
 
 4. Copy the included files to the `chrome` folder in your Thunderbird profile directory:
-   - Locate your Thunderbird profile folder:
-     - On Windows: `%APPDATA%\Thunderbird\Profiles\xxxxxxxx.default`
-     - On Linux/Mac: `~/.thunderbird/xxxxxxxx.default`
-   - Create a new directory named `chrome` inside this profile directory, it it does not already exist
-   - Place userChrome.css and the icon folders into your 'chrome' directory
+   - Click on Help > Troubleshooting information
+   - Scroll down to "Profile Folder" under "Application Basics" and click "Open Folder"
+   - Create a new folder named `chrome` inside your profile folder, if it does not already exist
+   - Place the userChrome.css file and all folders into the 'chrome' directory
    
 5. Restart Thunderbird.
 
