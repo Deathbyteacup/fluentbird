@@ -844,6 +844,11 @@ tr.card-layout[style*="height: 50px"] .sender {
     margin-top: 5px !important;
 }
 
+/* Fix for more 3 dots icon */
+#otherActionsButton .toolbarbutton-icon {
+	display: none;
+}
+
 /* DARK MODE */
 @media (prefers-color-scheme: dark) {
 
@@ -940,4 +945,5 @@ tr.card-layout[style*="height: 50px"] .sender {
 
 
 }
+
 
