@@ -831,6 +831,11 @@ tr.table-layout.selected.current {
 	}
 }
 
+/* Fix for compact mode on card headers */
+.sort-header-details {
+	display: none !important;
+}
+
 
 /* DARK MODE */
 @media (prefers-color-scheme: dark) {
@@ -925,5 +930,6 @@ tr.table-layout.selected.current {
 	#threadPaneDisplayButton {
 		background-image: url("Icons/list-dark.svg") !important;
 	}
+
 
 }
