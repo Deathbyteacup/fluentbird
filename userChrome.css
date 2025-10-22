@@ -1,7 +1,7 @@
-/* FLUENTBIRD - A FLUENT DESIGN THEME FOR THUNDERBIRD */
-/*     Created by Danny King - www.dannyking.co.uk    */
-/*    	               v0.1.5 BETA                    */
-/* 	       DISTRIBUTED UNDER THE MIT LICENSE	      */
+/* FLUENTBIRD - A FLUENT DESIGN THEME FOR THUNDERBIRD  */
+/*     Created by Danny King - www.dannyking.co.uk     */
+/*    	            v1.0.0 RELEASE                     */
+/* 	       DISTRIBUTED UNDER THE MIT LICENSE           */
 
 
 #spacesToolbar {
@@ -818,7 +818,7 @@ tr.table-layout.selected.current {
 	
 	/* Override the close button hover to use #c42b1c */
 	:root[customtitlebar] .titlebar-close:hover {
-		background-color: #c42b1c !important;
+		background-color: #c42b1cfa !important;
 		stroke: white !important;
 	}
 
