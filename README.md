@@ -26,18 +26,15 @@ Features
 - Supports both dark and light modes (system theme)
 - Enhances and highlights Mica transparency on Windows 11 systems
 
-This will likely be the last beta release, unless more issues are raised, with 1.0 release to occur alongside Thunderbird 141.
+This is the first stable release of Fluentbird, however, there may still be some bugs and issues, specifically when using operating systems other than Windows 11.
 
-0.1.5 Release Notes
---------
-- Improves the "no messages" envolope graphic in dark mode.
-- Fixes the subject line clashing with the star / tags icons in card view.
+There are now issue templates, when reporting issues, please let me know exactly which OS and version you're using, the version of Thunderbird, and any specific settings related to the bug. Thanks!
 
-0.1.4 Release Notes
+1.0.0 Release Notes
 --------
-- Adds Fluent icons and correct button styling for the "Reply List" button
-- Fixes button hover colour in Dark Mode
-- Fixes subject line colour on card view in Dark Mode
+- Fixes an issue where a small black box would flash momentarily when hovering over the close button on Windows.
+- Fixes an issue where, when the cards view was set to "2 rows", the sender's information would be cropped.
+- Fixes an issue where, when set to compact view, the sort headers would appear in an unintended way.
 
 Credits
 --------
