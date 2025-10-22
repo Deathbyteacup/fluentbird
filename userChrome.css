@@ -836,6 +836,13 @@ tr.table-layout.selected.current {
 	display: none !important;
 }
 
+/* Target cards with approximately 2-row height */
+tr.card-layout[style*="height: 49px"] .sender,
+tr.card-layout[style*="height: 50px"] .sender {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    margin-top: 5px !important;
+}
 
 /* DARK MODE */
 @media (prefers-color-scheme: dark) {
@@ -933,3 +940,4 @@ tr.table-layout.selected.current {
 
 
 }
+
