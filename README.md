@@ -30,15 +30,9 @@ This is the first stable release of Fluentbird, however, there may still be some
 
 There are now issue templates, when reporting issues, please let me know exactly which OS and version you're using, the version of Thunderbird, and any specific settings related to the bug. Thanks!
 
-1.0.1 Release Notes
+1.0.2 Release Notes
 --------
-- Minor patch to fix an issue where two icons appeared on the "More" button instead of just the intended Fluent icon, as a result of a recent Thunderbird update.
-
-1.0.0 Release Notes
---------
-- Fixes an issue where a small black box would flash momentarily when hovering over the close button on Windows.
-- Fixes an issue where, when the cards view was set to "2 rows", the sender's information would be cropped.
-- Fixes an issue where, when set to compact view, the sort headers would appear in an unintended way.
+- Fixes an issue where mail header labels were misaligned when "Hide Label Columns" was unselected in Message Header Settings.
 
 Credits
 --------
