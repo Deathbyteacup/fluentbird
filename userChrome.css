@@ -106,6 +106,18 @@ tr.children .thread-card-button:has(.thread-replies[data-l10n-id]) ~ .thread-car
 	font-size: 0.96rem !important;
 }
 
+
+/* Fix for header text misalignment */
+
+.message-header-label {
+	align-self: center !important;
+}
+
+#expandedtoLabel, #expandedccLabel, #expandedreply-toLabel {
+	margin-top: 3px !important;
+}
+
+
 tree-view[data-show-grouped-by-sort="true"] .card-layout.children {
   height: 30px !important;
 }
@@ -945,5 +957,6 @@ tr.card-layout[style*="height: 50px"] .sender {
 
 
 }
+
 
 
