@@ -226,14 +226,6 @@ ol[role="tree"] .container .twisty {
 	font-size: 1.4rem !important;
 }
 
-.notification-button.small-button.footer-button.button-menu-list {
-	background-color: #fff0 !important;
-	padding: 3px !important;
-	padding-right: 20px !important;
-	padding-left: 10px !important;
-	border: none !important;
-}
-
 .notification-button.small-button.footer-button.button-menu-list .button-text {
 	margin-bottom: 3px !important;
 	margin-right: 1px;
@@ -966,6 +958,7 @@ tr.card-layout[style*="height: 50px"] .sender {
 
 
 }
+
 
 
 
