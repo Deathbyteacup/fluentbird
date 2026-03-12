@@ -30,8 +30,9 @@ This is the first stable release of Fluentbird, however, there may still be some
 
 There are now issue templates, when reporting issues, please let me know exactly which OS and version you're using, the version of Thunderbird, and any specific settings related to the bug. Thanks!
 
-1.0.5 Release Notes
+1.0.6 Release Notes
 --------
+- Fixes missing tag icons, these use the default colour set, with a fluent color scheme. Future plans are to investigate making the fluent icons dynamically use colours set by the user.
 - Fixes an issue where icons were clashing with the original Thunderbird icons after a recent update.
 
 Credits
