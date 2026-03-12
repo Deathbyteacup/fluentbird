@@ -492,6 +492,33 @@ tr.card-layout.children span.subject {
 	background-color: #ffd45c !important;
 }
 
+/* Tag icons */
+#folderTree li[data-tag-key] > .container > .icon {
+    width: 16px !important;
+    height: 16px !important;
+    mask-image: url("Icons/ic_fluent_tag_24_filled.svg") !important;
+    mask-repeat: no-repeat !important;
+    mask-size: 16px 16px !important;
+    mask-position: center !important;
+}
+
+/* Thunderbird's default tag colors */
+#folderTree li[data-tag-key="$label1"] > .container > .icon {
+    background-color: #e15e34 !important; /* Important */
+}
+#folderTree li[data-tag-key="$label2"] > .container > .icon {
+    background-color: #f5be41 !important; /* Work */
+}
+#folderTree li[data-tag-key="$label3"] > .container > .icon {
+    background-color: #8fbc39 !important; /* Personal */
+}
+#folderTree li[data-tag-key="$label4"] > .container > .icon {
+    background-color: #4aa5ea !important; /* To Do */
+}
+#folderTree li[data-tag-key="$label5"] > .container > .icon {
+    background-color: #4b53bc !important; /* Later */
+}
+
 .toolbarbutton-icon {
 	margin-left: 5px;
 	margin-right: -5px;
@@ -958,6 +985,7 @@ tr.card-layout[style*="height: 50px"] .sender {
 
 
 }
+
 
 
 
