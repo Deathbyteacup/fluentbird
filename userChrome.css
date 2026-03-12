@@ -1,6 +1,6 @@
 /* FLUENTBIRD - A FLUENT DESIGN THEME FOR THUNDERBIRD  */
 /*     Created by Danny King - www.dannyking.co.uk     */
-/*    	            v1.0.0 RELEASE                     */
+/*    	            v1.0.5 RELEASE                     */
 /* 	       DISTRIBUTED UNDER THE MIT LICENSE           */
 
 
@@ -862,6 +862,7 @@ tr.card-layout[style*="height: 50px"] .sender {
 	display: none;
 }
 
+
 /* DARK MODE */
 @media (prefers-color-scheme: dark) {
 
@@ -899,7 +900,6 @@ tr.card-layout[style*="height: 50px"] .sender {
 	.notification-button.button-menu-list {
 	  stroke: #000 !important;
 	}
-
 
 	:is(ul, ol)[role="tree"] li.selected.current>.container {
 		border-color: #515151 !important;
@@ -958,6 +958,7 @@ tr.card-layout[style*="height: 50px"] .sender {
 
 
 }
+
 
 
 
