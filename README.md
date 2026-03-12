@@ -30,9 +30,9 @@ This is the first stable release of Fluentbird, however, there may still be some
 
 There are now issue templates, when reporting issues, please let me know exactly which OS and version you're using, the version of Thunderbird, and any specific settings related to the bug. Thanks!
 
-1.0.2 Release Notes
+1.0.5 Release Notes
 --------
-- Fixes an issue where mail header labels were misaligned when "Hide Label Columns" was unselected in Message Header Settings.
+- Fixes an issue where icons were clashing with the original Thunderbird icons after a recent update.
 
 Credits
 --------
