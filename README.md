@@ -30,10 +30,14 @@ This is the first stable release of Fluentbird, however, there may still be some
 
 There are now issue templates, when reporting issues, please let me know exactly which OS and version you're using, the version of Thunderbird, and any specific settings related to the bug. Thanks!
 
-1.0.6 Release Notes
+1.1.0 Release Notes
 --------
-- Fixes missing tag icons, these use the default colour set, with a fluent color scheme. Future plans are to investigate making the fluent icons dynamically use colours set by the user.
-- Fixes an issue where icons were clashing with the original Thunderbird icons after a recent update.
+- This is a major refactoring of FluentBird. The code has been reorganised and made more efficent, and commented.
+- NEW FEATURE: There is now a seperate CSS file for custom overrides. You can now add any personal customisations to custom.css and retain these when you upgrade to future verions.
+- Folder icons now take on custom colors.
+- Tag icons now take on their correct / custom colors.
+- Mailboxes now have a custom icon, which can also take on a custom color.
+- Fixes a regression in 1.0.6 that saw the fluent icons clash with the default Thunderbird icons.
 
 Credits
 --------
