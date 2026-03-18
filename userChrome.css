@@ -1,26 +1,65 @@
 /* FLUENTBIRD - A FLUENT DESIGN THEME FOR THUNDERBIRD  */
 /*     Created by Danny King - www.dannyking.co.uk     */
-/*    	            v1.0.6 RELEASE                     */
-/* 	       DISTRIBUTED UNDER THE MIT LICENSE           */
+/*                   v1.1.0 RELEASE                    */
+/*        DISTRIBUTED UNDER THE MIT LICENSE            */
 
+/* =====================================================
+   CUSTOM OVERRIDES
+   If you want to make your own tweaks, you can 
+   place your own CSS in a file named:
+       custom.css
+   in the same folder as this file.
+   ===================================================== */
 
-#spacesToolbar {
-	background-color: #fff0 !important;
-	background-image: none !important;
-	border: 0px !important;
-}
+@import url("custom.css");
 
+/* =====================================================
+   LAYOUT & WINDOW CHROME
+   ===================================================== */
+
+/* Rounded top-left clip on main content area */
 #messengerBody {
 	opacity: 90%;
-	/* simulate a Fluent rounded corner by clipping the content area */
 	border-top-left-radius: 12px !important;
 	overflow: hidden !important;
 }
 
-.icons-beside-text,
-.icons-only {
-	border-bottom: 0px solid rgba(0, 0, 0, 0.15) !important;
+/* Hide hamburger menu and keyboard shortcut container */
+#button-appmenu {
+	display: none !important;
 }
+
+.kbd-container {
+	display: none !important;
+}
+
+/* Windows titlebar button height */
+@media (-moz-platform: windows) {
+	:root[customtitlebar] .titlebar-button,
+	:root[customtitlebar] #titlebar-min,
+	:root[customtitlebar] #titlebar-max,
+	:root[customtitlebar] #titlebar-close {
+		height: 29px !important;
+	}
+
+	/* Close button hover colour */
+	:root[customtitlebar] .titlebar-close:hover {
+		background-color: #c42b1cfa !important;
+		stroke: white !important;
+	}
+
+	/* Custom maximise icon — light */
+	.titlebar-max {
+		-moz-default-appearance: -moz-window-button-maximize;
+		list-style-image: url("Titlebar_Icons/maximize-light.png") !important;
+		opacity: 0.9 !important;
+	}
+}
+
+
+/* =====================================================
+   TAB BAR
+   ===================================================== */
 
 #tabs-toolbar {
 	background-color: #fff0 !important;
@@ -41,6 +80,7 @@
 	background-color: #ffffffb8 !important;
 }
 
+/* Remove active-tab indicator line */
 .tab-line {
 	height: 0px !important;
 }
@@ -49,94 +89,387 @@
 	margin-left: 0px !important;
 }
 
-#button-appmenu {
+/* Remove stroke artifact on tab icons */
+.tab-icon-image {
+	stroke: #fff0 !important;
+}
+
+/* Suppress compact-mode sort header label */
+.sort-header-details {
 	display: none !important;
 }
 
-.kbd-container {
+
+/* =====================================================
+   SPACES TOOLBAR & SIDEBAR ICONS
+   ===================================================== */
+
+#spacesToolbar {
+	background-color: #fff0 !important;
+	background-image: none !important;
+	border: 0px !important;
+}
+
+/* Hide default icon images; replaced via background-image below */
+#mailButton img,
+#addressBookButton img,
+#calendarButton img,
+#tasksButton img,
+#chatButton img,
+#settingsButton img,
+#folderPaneGetMessages img {
 	display: none !important;
 }
 
-.search-button-icon {
-	margin-right: 5px !important;
+#mailButton {
+	background-image: url("Icons/mail-col.svg") !important;
+	background-repeat: no-repeat !important;
+	background-size: 20px 20px !important;
+	background-position: center !important;
+	width: 30px !important;
+	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)) !important;
 }
 
-global-search-bar {
-	opacity: 0.7 !important;
-	padding: 5px !important;
+#addressBookButton {
+	background-image: url("Icons/contact-col.svg") !important;
+	background-repeat: no-repeat !important;
+	background-size: 20px 20px !important;
+	background-position: center !important;
+	width: 30px !important;
+	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)) !important;
 }
 
-.list-header-title {
-	margin-left: 10px !important;
+#calendarButton {
+	background-image: url("Icons/calendar-col.svg") !important;
+	background-repeat: no-repeat !important;
+	background-size: 16px 16px !important;
+	background-position: center !important;
+	width: 30px !important;
+	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)) !important;
 }
 
+#tasksButton {
+	background-image: url("Icons/tasks-col.svg") !important;
+	background-repeat: no-repeat !important;
+	background-size: 20px 20px !important;
+	background-position: center !important;
+	width: 30px !important;
+	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)) !important;
+}
+
+#chatButton {
+	background-image: url("Icons/chat-col.svg") !important;
+	background-repeat: no-repeat !important;
+	background-size: 20px 20px !important;
+	background-position: center !important;
+	width: 30px !important;
+	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)) !important;
+}
+
+#settingsButton {
+	background-image: url("Icons/settings.svg") !important;
+	background-repeat: no-repeat !important;
+	background-size: 20px 20px !important;
+	background-position: center !important;
+	width: 30px !important;
+	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)) !important;
+}
+
+/* Hide settings button label text */
+.settings-btn-container #settingsButton,
+.settings-btn-container:hover #settingsButton {
+	color: #fff0 !important;
+}
+
+#folderPaneGetMessages {
+	background-image: url("Icons/sync.svg") !important;
+	background-repeat: no-repeat !important;
+	background-size: 20px 20px !important;
+	background-position: center !important;
+	width: 30px !important;
+}
+
+
+/* =====================================================
+   FOLDER TREE
+   ===================================================== */
+
+/* Account-level row: larger text, no icon */
+#folderTree li[data-server-type] > .container > .name {
+	font-weight: normal !important;
+	font-size: 1.18rem !important;
+}
+
+#folderTree li[data-server-type]:not(:first-of-type) > .container {
+	margin-top: 10px !important;
+}
+
+/* Folder icon overrides */
+#folderTree li[data-folder-type="inbox"] > .container > .icon {
+	mask-image: url("Icons/inbox.svg") !important;
+	mask-repeat: no-repeat !important;
+	mask-size: 16px 16px !important;
+	mask-position: center !important;
+	background-color: #5aa4ef !important;
+}
+
+#folderTree li[data-folder-type="drafts"] > .container > .icon {
+	background-image: url("Icons/drafts.svg") !important;
+	background-repeat: no-repeat !important;
+	background-size: 16px 16px !important;
+	background-position: center !important;
+}
+
+#folderTree li[data-folder-type="sent"] > .container > .icon {
+	background-image: url("Icons/sent.svg") !important;
+	background-repeat: no-repeat !important;
+	background-size: 16px 16px !important;
+	background-position: center !important;
+}
+
+#folderTree li[data-folder-type="junk"] > .container > .icon {
+	mask-image: url("Icons/junk.svg") !important;
+	mask-repeat: no-repeat !important;
+	mask-size: 16px 16px !important;
+	mask-position: center !important;
+	background-color: #df4646 !important;
+}
+
+#folderTree li[data-folder-type="trash"] > .container > .icon {
+	mask-image: url("Icons/trash.svg") !important;
+	mask-repeat: no-repeat !important;
+	mask-size: 16px 16px !important;
+	mask-position: center !important;
+	background-color: #8785a3 !important;
+}
+
+#folderTree li[data-folder-type="archive"] > .container > .icon {
+	mask-image: url("Icons/archive.svg") !important;
+	mask-repeat: no-repeat !important;
+	mask-size: 16px 16px !important;
+	mask-position: center !important;
+	background-color: #8785a3 !important;
+}
+
+#folderTree li[data-folder-type="outbox"] > .container > .icon {
+	mask-image: url("Icons/outbox.svg") !important;
+	mask-repeat: no-repeat !important;
+	mask-size: 16px 16px !important;
+	mask-position: center !important;
+	background-color: #6aadb5 !important;
+}
+
+/* Generic folder icon */
+#folderTree li:not([data-folder-type]) > .container > .icon {
+    content: none !important;
+    mask-image: url("Icons/folder.svg") !important;
+    mask-repeat: no-repeat !important;
+    mask-size: 16px 16px !important;
+    mask-position: center !important;
+    background-color: #ffcc42 !important;
+}
+
+#folderTree li:not([data-folder-type]) > .container > .icon[style*="--icon-color"] {
+    background-color: var(--icon-color) !important;
+}
+
+/* Tag folder icons */
+#folderTree li[data-tag-key] > .container > .icon {
+	width: 16px !important;
+	height: 16px !important;
+	mask-image: url("Icons/ic_fluent_tag_24_filled.svg") !important;
+	mask-repeat: no-repeat !important;
+	mask-size: 16px 16px !important;
+	mask-position: center !important;
+}
+
+#folderTree li[data-tag-key="$label1"] > .container > .icon { background-color: var(--tag-\$label1-backcolor) !important; }
+#folderTree li[data-tag-key="$label2"] > .container > .icon { background-color: var(--tag-\$label2-backcolor) !important; }
+#folderTree li[data-tag-key="$label3"] > .container > .icon { background-color: var(--tag-\$label3-backcolor) !important; }
+#folderTree li[data-tag-key="$label4"] > .container > .icon { background-color: var(--tag-\$label4-backcolor) !important; }
+#folderTree li[data-tag-key="$label5"] > .container > .icon { background-color: var(--tag-\$label5-backcolor) !important; }
+
+/* Mail Account Icon */
+
+#folderTree li[data-server-type] > .container > .icon {
+    content: none !important;
+    list-style-image: none !important;
+    display: block !important;
+    width: 16px !important;
+    height: 16px !important;
+    mask-image: url("Icons/ic_fluent_mail_all_24_filled.svg") !important;
+    mask-repeat: no-repeat !important;
+    mask-size: 16px 16px !important;
+    mask-position: center !important;
+    background-color: #5aa4ef !important;
+}
+
+/* Unread count badge */
+.unread > .container > .unread-count {
+	display: unset !important;
+	background-color: #71717a00 !important;
+	color: #2065b0 !important;
+	font-size: 1.01rem !important;
+}
+
+/* Twisty indent */
+ul[role="tree"] .container .twisty,
+ol[role="tree"] .container .twisty {
+	margin-left: 6px !important;
+}
+
+/* Selected row indicator offset */
+:is(ul, ol)[role="tree"] li.selected > .container::before {
+	transform: translateX(3px) !important;
+}
+
+/* Selected/focused folder row */
+:is(ul, ol)[role="tree"] li.selected.current > .container {
+	border-color: #e1e1e1 !important;
+	background-color: #e1e1e1 !important;
+}
+
+/* FIX FOR ICON CLASHES IN NAVIGATOR */
+
+#folderTree li[data-folder-type="sent"] > .container > .icon {
+    / content: radial-gradient; /
+    --icon-color: #FFFFFF00 !important;
+}
+#folderTree li[data-folder-type="drafts"] > .container > .icon {
+    / content: var(--icon-draft); /
+    --icon-color: #FFFFFF00 !important;
+}
+#folderTree li[data-folder-type="inbox"] > .container > .icon {
+    / content: var(--icon-inbox); /
+    --icon-color: #FFFFFF00 !important;
+}
+#folderTree li[data-folder-type="trash"] > .container > .icon {
+    / content: var(--icon-trash); */
+    --icon-color: #FFFFFF00 !important;
+}
+#folderTree li[data-folder-type="junk"] > .container > .icon {
+    content: var(--icon-spam);
+    --icon-color: #FFFFFF00 !important;
+}
+#folderTree li .icon {
+    content: none !important;
+    display: block !important;
+    overflow: hidden !important;
+}
+/* =====================================================
+   THREAD PANE
+   ===================================================== */
+
+#threadPaneHeaderBar {
+	border-bottom: 0px !important;
+}
+
+/* Filter and display button icons */
+#threadPaneQuickFilterButton {
+	background-image: url("Icons/filter.svg") !important;
+}
+
+#threadPaneDisplayButton,
+#displayButton {
+	background-image: url("Icons/list.svg") !important;
+}
+
+/* Hide thread reply count controls */
+button .replies-icon,
+button .thread-replies {
+	display: none !important;
+}
+
+/* Subject indent for child rows with replies */
+tr.children .thread-card-button:has(.thread-replies[data-l10n-id]) ~ .thread-card-subject-container .subject {
+	margin-left: 15px !important;
+}
+
+/* Card layout spacing */
+.thread-card-dynamic-row {
+	gap: 0px !important;
+	row-gap: 0px !important;
+	padding-bottom: 0px !important;
+	margin-bottom: 0px !important;
+}
+
+.thread-card-dynamic-row > .thread-card-button {
+	align-self: end !important;
+}
+
+/* Card subject text */
+.thread-card-subject-container {
+	color: #606060;
+	font-size: 0.96rem !important;
+	width: 85%;
+}
+
+/* Sender name */
 .sender {
 	font-size: 1.15rem !important;
 	font-weight: 500 !important;
 	margin-top: 8px !important;
 }
 
-button .replies-icon {
-	display: none !important;
+& .card-container .sender {
+	padding-inline-start: 3px !important;
 }
 
-button .thread-replies {
-	display: none;
+/* Compact sender text for short-height cards */
+tr.card-layout[style*="height: 49px"] .sender,
+tr.card-layout[style*="height: 50px"] .sender {
+	font-size: 1rem !important;
+	font-weight: 500 !important;
+	margin-top: 5px !important;
 }
 
-tr.children .thread-card-button:has(.thread-replies[data-l10n-id]) ~ .thread-card-subject-container .subject {
-  margin-left: 15px !important;
+/* Child thread subject font size */
+tr.card-layout.children span.subject {
+	font-size: 0.95em !important;
 }
 
-.thread-card-dynamic-row > .thread-card-button {
-  align-self: end !important;
+/* Unread indicator dot */
+#threadTree[rows="thread-card"] .card-layout td .card-container .read-status {
+	content: var(--read-status-icon) !important;
+	height: var(--read-status-size) !important;
+	width: var(--read-status-size) !important;
+	fill: #4ade8000 !important;
+	stroke: #16a34a00 !important;
+	margin-left: 0 !important;
 }
 
-
-
-.thread-card-dynamic-row {
-  gap: 0px !important;
-  row-gap: 0px !important;
-  padding-bottom: 0px !important;
-  margin-bottom: 0px !important;
+/* Unread indicator inline offset */
+#threadTree[rows="thread-card"] .card-layout td .card-container::before {
+	inset-inline-start: calc(var(--indicator-width) * 2 - var(--indicator-gap)) !important;
 }
 
-.thread-card-subject-container {
-	color: #606060;
-	font-size: 0.96rem !important;
+/* Remove row highlight behind cards; apply highlight to card itself */
+[is="tree-view-table-body"] tr.selected.current {
+	background-color: transparent !important;
 }
 
-
-/* Fix for header text misalignment */
-
-.message-header-label {
-	align-self: center !important;
+[is="tree-view-table-body"] .card-layout.selected.current .card-container {
+	background-color: #cde6f7 !important;
+	border: 1px solid #bfbfbf !important;
 }
 
-#expandedtoLabel, #expandedccLabel, #expandedreply-toLabel {
-	margin-top: 3px !important;
+/* Unfocused selected card */
+#threadTree[rows="thread-card"]:not(:focus, :focus-within) .card-layout.selected.current .card-container,
+#threadTree[rows="thread-card"]:not(:focus, :focus-within) .card-layout[data-properties~="junk"].selected.current .card-container {
+	background-color: #e1e1e1 !important;
+	border: 1px solid #bfbfbf !important;
 }
 
-
-tree-view[data-show-grouped-by-sort="true"] .card-layout.children {
-  height: 30px !important;
+&.selected.current {
+	--tree-card-background: #e1e1e1;
 }
 
-tree-view[data-show-grouped-by-sort="true"] .card-layout.children *,
-tree-view[data-show-grouped-by-sort="true"] .card-layout.children:hover,
-tree-view[data-show-grouped-by-sort="true"] .card-layout.children *:hover {
-  background: none !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-  border-color: transparent !important;
-  color: inherit !important;
-  filter: none !important;
-  outline: none !important;
-  text-decoration: none !important;
-  transition: none !important;
+/* Selected table-layout row colour */
+tr.table-layout.selected.current {
+	color: #45a0ef !important;
 }
 
-
+/* Twisty button position fix */
 .button.button-flat.button-reset.twisty.thread-card-button {
 	margin-top: -38px !important;
 }
@@ -145,71 +478,52 @@ tree-view[data-show-grouped-by-sort="true"] .card-layout.children *:hover {
 	margin-top: -15px;
 }
 
-& .card-container .sender {
-	padding-inline-start: 3px !important;
+/* Grouped-by-sort child rows */
+tree-view[data-show-grouped-by-sort="true"] .card-layout.children {
+	height: 30px !important;
 }
 
-#folderTree li[data-server-type]>.container>.name {
-	font-weight: normal !important;
-	font-size: 1.18rem !important;
+tree-view[data-show-grouped-by-sort="true"] .card-layout.children *,
+tree-view[data-show-grouped-by-sort="true"] .card-layout.children:hover,
+tree-view[data-show-grouped-by-sort="true"] .card-layout.children *:hover {
+	background: none !important;
+	background-color: transparent !important;
+	box-shadow: none !important;
+	border-color: transparent !important;
+	color: inherit !important;
+	filter: none !important;
+	outline: none !important;
+	text-decoration: none !important;
+	transition: none !important;
 }
 
-#folderTree li[data-server-type]:not(:first-of-type) > .container {
-    margin-top: 10px !important;
+/* Empty pane placeholder icon */
+#placeholderNoMessages::before {
+	background-image: url("Icons/mail.svg") !important;
+}
+
+/* List header indent */
+.list-header-title {
+	margin-left: 10px !important;
 }
 
 
-#folderTree li[data-server-type] > .container > .icon {
-    display: none !important;
+/* =====================================================
+   MESSAGE HEADER & READING PANE
+   ===================================================== */
+
+/* Header label vertical alignment */
+.message-header-label {
+	align-self: center !important;
 }
 
-
-ul[role="tree"] .container .twisty,
-ol[role="tree"] .container .twisty {
-	margin-left: 6px !important;
+#expandedtoLabel,
+#expandedccLabel,
+#expandedreply-toLabel {
+	margin-top: 3px !important;
 }
 
-.settings-btn-container #settingsButton {
-	color: #fff0 !important;
-}
-
-.settings-btn-container:hover #settingsButton {
-	color: #fff0 !important;
-}
-
-/* FIX FOR SCAM ALERT, CREDT JEVANDUSEN */
-.infobar.animated:not([value="maybeScam"]) {
-	width: 98% !important;
-	margin: auto !important;
-	--message-bar-background-color: #e6f2fa !important;
-	margin-bottom: 10px !important;
-}
-
-.infobar.animated:not([value="maybeScam"]) .notification-button.small-button.footer-button.button-menu-list {
-	background-color: #fff0 !important;
-	padding: 3px !important;
-	padding-right: 20px !important;
-	padding-left: 10px !important;
-	border: none !important;
-}
-
-.message-header-view-button .toolbarbutton-text {
-	padding-inline-start: 6px !important;
-	padding: 8px !important;
-}
-
-.toolbarbutton-1 {
-	background-color: #fff !important;
-}
-
-.toolbarbutton-1:hover {
-	background-color: #f1f0f0 !important;
-}
-
-#threadTree[rows="thread-card"] .card-layout td .card-container::before {
-	inset-inline-start: calc(var(--indicator-width) * 2 - var(--indicator-gap)) !important;
-}
-
+/* Recipient avatar */
 .recipient-avatar {
 	height: 45px !important;
 	width: 45px !important;
@@ -226,21 +540,76 @@ ol[role="tree"] .container .twisty {
 	font-size: 1.4rem !important;
 }
 
+/* Address book button in recipient row */
+.recipient-address-book-button {
+	width: 12px !important;
+	height: 12px !important;
+	mask-image: url("Icons/person.svg") !important;
+	mask-repeat: no-repeat !important;
+	mask-size: 12px 12px !important;
+	mask-position: center !important;
+	background-color: #5aa4ef !important;
+}
+
+.recipient-address-book-button img {
+	display: none !important;
+}
+
+/* To/Cc/Reply-To headings */
+#toHeading,
+#ccHeading,
+#reply-toHeading {
+	margin-top: 5px !important;
+	font-weight: bolder !important;
+}
+
+/* Info bar (e.g. remote content notice), credit jevandusen */
+.infobar.animated:not([value="maybeScam"]) {
+	width: 98% !important;
+	margin: auto !important;
+	--message-bar-background-color: #e6f2fa !important;
+	margin-bottom: 10px !important;
+}
+
+.infobar.animated:not([value="maybeScam"]) .notification-button.small-button.footer-button.button-menu-list {
+	background-color: #fff0 !important;
+	padding: 3px !important;
+	padding-right: 20px !important;
+	padding-left: 10px !important;
+	border: none !important;
+}
+
 .notification-button.small-button.footer-button.button-menu-list .button-text {
 	margin-bottom: 3px !important;
 	margin-right: 1px;
 }
 
-.toolbarbutton-menu-dropmarker {
-	margin-right: 5px;
+
+/* =====================================================
+   TOOLBAR ACTION BUTTONS (reply, forward, trash, etc.)
+   ===================================================== */
+
+.toolbarbutton-1 {
+	background-color: #fff !important;
 }
 
-#otherActionsButton {
-	position: relative !important;
-	padding-left: 20px !important;
-	/* reserve space for your icon */
+.toolbarbutton-1:hover {
+	background-color: #f1f0f0 !important;
 }
 
+.toolbarbutton-1 .toolbarbutton-icon {
+	box-sizing: border-box !important;
+	width: 18px !important;
+	height: 18px !important;
+	color: #005f99 !important;
+}
+
+.toolbarbutton-icon {
+	margin-left: 5px;
+	margin-right: -5px;
+}
+
+/* Borders on message header buttons */
 #messageHeader:not(.message-header-buttons-only-icons) .toolbarbutton-1.message-header-view-button:not([is="toolbarbutton-menu-button"]) {
 	border-color: #ececee !important;
 }
@@ -255,10 +624,33 @@ ol[role="tree"] .container .twisty {
 
 #hdrReplyListButton .toolbarbutton-menubutton-button,
 #hdrReplyListButton .toolbarbutton-menubutton-dropmarker {
-  border: 1px solid #ececee !important;
-  box-sizing: border-box !important;
+	border: 1px solid #ececee !important;
+	box-sizing: border-box !important;
 }
 
+.toolbarbutton-menu-dropmarker {
+	margin-right: 5px;
+}
+
+.message-header-view-button .toolbarbutton-text {
+	padding-inline-start: 6px !important;
+	padding: 8px !important;
+}
+
+.icons-beside-text,
+.icons-only {
+	border-bottom: 0px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+/* "More actions" button: hide default icon, inject custom SVG via ::before */
+#otherActionsButton {
+	position: relative !important;
+	padding-left: 20px !important;
+}
+
+#otherActionsButton .toolbarbutton-icon {
+	display: none;
+}
 
 #otherActionsButton::before {
 	content: "" !important;
@@ -276,269 +668,10 @@ ol[role="tree"] .container .twisty {
 	pointer-events: none;
 }
 
-
-.unread>.container>.unread-count {
-	display: unset !important;
-	background-color: #71717a00 !important;
-	color: #2065b0 !important;
-	font-size: 1.01rem !important;
-}
-
-:is(ul, ol)[role="tree"] li.selected>.container::before {
-	transform: translateX(3px) !important;
-}
-
-:is(ul, ol)[role="tree"] li.selected.current>.container {
-	border-color: #e1e1e1 !important;
-	background-color: #e1e1e1 !important;
-}
-
-
-/* kill row highlight behind the card */
-[is="tree-view-table-body"] tr.selected.current {
-	background-color: transparent !important;
-}
-
-/* force the card container's background directly */
-[is="tree-view-table-body"] .card-layout.selected.current .card-container {
-	background-color: #cde6f7 !important;
-	border: 1px solid #bfbfbf !important;
-}
-
-/* unfocused or junk card specifically */
-#threadTree[rows="thread-card"]:not(:focus, :focus-within) .card-layout.selected.current .card-container,
-#threadTree[rows="thread-card"]:not(:focus, :focus-within) .card-layout[data-properties~="junk"].selected.current .card-container {
-	background-color: #e1e1e1 !important;
-	border: 1px solid #bfbfbf !important;
-}
-
-&.selected.current {
-	--tree-card-background: #e1e1e1;
-}
-
-.toolbarbutton-1 .toolbarbutton-icon {
-	box-sizing: border-box !important;
-	width: 18px !important;
-	height: 18px !important;
-	color: #005f99 !important;
-}
-
-#threadPaneHeaderBar {
-	border-bottom: 0px !important;
-}
-
-tr.card-layout.children span.subject {
-	font-size: 0.95em !important;
-}
-
-#mailButton {
-	background-image: url("Icons/mail-col.svg") !important;
-	background-repeat: no-repeat !important;
-	background-size: 20px 20px !important;
-	background-position: center !important;
-	width: 30px !important;
-	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)) !important;
-}
-
-#mailButton img {
-	display: none !important;
-}
-
-#addressBookButton {
-	background-image: url("Icons/contact-col.svg") !important;
-	background-repeat: no-repeat !important;
-	background-size: 20px 20px !important;
-	background-position: center !important;
-	width: 30px !important;
-	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)) !important;
-}
-
-#addressBookButton img {
-	display: none !important;
-}
-
-#calendarButton {
-	background-image: url("Icons/calendar-col.svg") !important;
-	background-repeat: no-repeat !important;
-	background-size: 20px 20px !important;
-	background-position: center !important;
-	width: 30px !important;
-	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)) !important;
-}
-
-#calendarButton img {
-	display: none !important;
-}
-
-#tasksButton {
-	background-image: url("Icons/tasks-col.svg") !important;
-	background-repeat: no-repeat !important;
-	background-size: 20px 20px !important;
-	background-position: center !important;
-	width: 30px !important;
-	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)) !important;
-}
-
-#tasksButton img {
-	display: none !important;
-}
-
-#chatButton {
-	background-image: url("Icons/chat-col.svg") !important;
-	background-repeat: no-repeat !important;
-	background-size: 20px 20px !important;
-	background-position: center !important;
-	width: 30px !important;
-	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)) !important;
-}
-
-#chatButton img {
-	display: none !important;
-}
-
-#settingsButton {
-	background-image: url("Icons/settings.svg") !important;
-	background-repeat: no-repeat !important;
-	background-size: 20px 20px !important;
-	background-position: center !important;
-	width: 30px !important;
-	filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)) !important;
-}
-
-#settingsButton img {
-	display: none !important;
-}
-
-#folderPaneGetMessages {
-	background-image: url("Icons/sync.svg") !important;
-	background-repeat: no-repeat !important;
-	background-size: 20px 20px !important;
-	background-position: center !important;
-	width: 30px !important;
-}
-
-#folderPaneGetMessages img {
-	display: none !important;
-}
-
-#folderTree li[data-folder-type="inbox"]>.container>.icon {
-	mask-image: url("Icons/inbox.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 16px 16px !important;
-	mask-position: center !important;
-	background-color: #5aa4ef !important;
-}
-
-#folderTree li[data-folder-type="inbox"]>.container>.icon {
-	mask-image: url("Icons/inbox.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 16px 16px !important;
-	mask-position: center !important;
-	background-color: #5aa4ef !important;
-}
-
-
-#folderTree li[data-folder-type="drafts"]>.container>.icon {
-	background-image: url("Icons/drafts.svg") !important;
-	background-repeat: no-repeat !important;
-	background-size: 16px 16px !important;
-	background-position: center !important;
-}
-
-#folderTree li[data-folder-type="sent"]>.container>.icon {
-	background-image: url("Icons/sent.svg") !important;
-	background-repeat: no-repeat !important;
-	background-size: 16px 16px !important;
-	background-position: center !important;
-}
-
-#folderTree li[data-folder-type="junk"]>.container>.icon {
-	mask-image: url("Icons/junk.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 16px 16px !important;
-	mask-position: center !important;
-	background-color: #df4646 !important;
-}
-
-#folderTree li[data-folder-type="trash"]>.container>.icon {
-	mask-image: url("Icons/trash.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 16px 16px !important;
-	mask-position: center !important;
-	background-color: #8785a3 !important;
-}
-
-#folderTree li[data-folder-type="archive"]>.container>.icon {
-	mask-image: url("Icons/archive.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 16px 16px !important;
-	mask-position: center !important;
-	background-color: #8785a3 !important;
-}
-
-#folderTree li[data-folder-type="outbox"]>.container>.icon {
-	mask-image: url("Icons/outbox.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 16px 16px !important;
-	mask-position: center !important;
-	background-color: #6aadb5 !important;
-}
-
-#folderTree li:not([data-folder-type])>.container>.icon {
-	mask-image: url("Icons/folder.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 16px 16px !important;
-	mask-position: center !important;
-	background-color: #ffd45c !important;
-}
-
-/* Tag icons */
-#folderTree li[data-tag-key] > .container > .icon {
-    width: 16px !important;
-    height: 16px !important;
-    mask-image: url("Icons/ic_fluent_tag_24_filled.svg") !important;
-    mask-repeat: no-repeat !important;
-    mask-size: 16px 16px !important;
-    mask-position: center !important;
-}
-
-/* Thunderbird's default tag colors */
-#folderTree li[data-tag-key="$label1"] > .container > .icon {
-    background-color: #e15e34 !important; /* Important */
-}
-#folderTree li[data-tag-key="$label2"] > .container > .icon {
-    background-color: #f5be41 !important; /* Work */
-}
-#folderTree li[data-tag-key="$label3"] > .container > .icon {
-    background-color: #8fbc39 !important; /* Personal */
-}
-#folderTree li[data-tag-key="$label4"] > .container > .icon {
-    background-color: #4aa5ea !important; /* To Do */
-}
-#folderTree li[data-tag-key="$label5"] > .container > .icon {
-    background-color: #4b53bc !important; /* Later */
-}
-
-.toolbarbutton-icon {
-	margin-left: 5px;
-	margin-right: -5px;
-}
-
-#hdrReplyButton .toolbarbutton-icon {
-	list-style-image: none !important;
-	/* kill theme icon */
-	mask-image: url("Icons/reply.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 16px 16px !important;
-	mask-position: center !important;
-	background-color: #b566bf !important;
-	width: 16px !important;
-	height: 16px !important;
-}
-
+/* Custom masked icons for each header action button */
+#hdrReplyButton .toolbarbutton-icon,
 #hdrReplyToSenderButton .toolbarbutton-icon {
 	list-style-image: none !important;
-	/* kill theme icon */
 	mask-image: url("Icons/reply.svg") !important;
 	mask-repeat: no-repeat !important;
 	mask-size: 16px 16px !important;
@@ -550,7 +683,6 @@ tr.card-layout.children span.subject {
 
 #hdrReplyAllButton .toolbarbutton-icon {
 	list-style-image: none !important;
-	/* kill theme icon */
 	mask-image: url("Icons/reply-all.svg") !important;
 	mask-repeat: no-repeat !important;
 	mask-size: 16px 16px !important;
@@ -562,7 +694,6 @@ tr.card-layout.children span.subject {
 
 #hdrReplyListButton .toolbarbutton-icon {
 	list-style-image: none !important;
-	/* kill theme icon */
 	mask-image: url("Icons/list-reply.svg") !important;
 	mask-repeat: no-repeat !important;
 	mask-size: 16px 16px !important;
@@ -574,7 +705,6 @@ tr.card-layout.children span.subject {
 
 #hdrForwardButton .toolbarbutton-icon {
 	list-style-image: none !important;
-	/* kill theme icon */
 	mask-image: url("Icons/forward.svg") !important;
 	mask-repeat: no-repeat !important;
 	mask-size: 16px 16px !important;
@@ -586,7 +716,6 @@ tr.card-layout.children span.subject {
 
 #hdrArchiveButton .toolbarbutton-icon {
 	list-style-image: none !important;
-	/* kill theme icon */
 	mask-image: url("Icons/archive.svg") !important;
 	mask-repeat: no-repeat !important;
 	mask-size: 16px 16px !important;
@@ -598,7 +727,6 @@ tr.card-layout.children span.subject {
 
 #hdrJunkButton .toolbarbutton-icon {
 	list-style-image: none !important;
-	/* kill theme icon */
 	mask-image: url("Icons/junk.svg") !important;
 	mask-repeat: no-repeat !important;
 	mask-size: 16px 16px !important;
@@ -610,7 +738,6 @@ tr.card-layout.children span.subject {
 
 #hdrTrashButton .toolbarbutton-icon {
 	list-style-image: none !important;
-	/* kill theme icon */
 	mask-image: url("Icons/trash.svg") !important;
 	mask-repeat: no-repeat !important;
 	mask-size: 16px 16px !important;
@@ -620,26 +747,44 @@ tr.card-layout.children span.subject {
 	height: 16px !important;
 }
 
-.recipient-address-book-button {
-	width: 12px !important;
-	height: 12px !important;
-	mask-image: url("Icons/person.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 12px 12px !important;
-	mask-position: center !important;
-	background-color: #5aa4ef !important;
+
+/* =====================================================
+   SEARCH BAR
+   ===================================================== */
+
+global-search-bar {
+	opacity: 0.7 !important;
+	padding: 5px !important;
 }
 
-.recipient-address-book-button img {
-	display: none !important;
+.search-button-icon {
+	margin-right: 5px !important;
 }
 
-#toHeading,
-#ccHeading,
-#reply-toHeading {
-	margin-top: 5px !important;
-	font-weight: bolder !important;
+
+/* =====================================================
+   ADDRESS BOOK PANE
+   ===================================================== */
+
+#booksPaneCreateList {
+	background-image: url("Icons/book.svg") !important;
 }
+
+.bookRow-icon {
+	background-image: url("Icons/notepad-person.svg") !important;
+}
+
+/* Remove top border on contacts list */
+#cards[rows="ab-card-row"] {
+	border-top: 0px solid var(--splitter-color) !important;
+}
+
+
+/* =====================================================
+   TAB ICONS
+   ===================================================== */
+
+/* Each rule replaces a Thunderbird default tab icon with a custom masked SVG */
 
 .tab-icon-image[src*="chrome://messenger/skin/icons/new/compact/inbox.svg"] {
 	content: none !important;
@@ -663,26 +808,20 @@ tr.card-layout.children span.subject {
 	height: 16px !important;
 }
 
-.tab-icon-image[src*="chrome://messenger/skin/icons/new/compact/draft.svg"] {
-	content: none !important;
-	mask-image: url("Icons/drafts.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 16px 16px !important;
-	mask-position: center !important;
-	background-color: #525b65 !important;
-	width: 16px !important;
-	height: 16px !important;
+#folderTree li[data-folder-type="drafts"] > .container > .icon {
+    mask-image: url("Icons/drafts.svg") !important;
+    mask-repeat: no-repeat !important;
+    mask-size: 16px 16px !important;
+    mask-position: center !important;
+    background-color: var(--folder-color-draft) !important;
 }
 
-.tab-icon-image[src*="chrome://messenger/skin/icons/new/compact/sent.svg"] {
-	content: none !important;
-	mask-image: url("Icons/sent.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 16px 16px !important;
-	mask-position: center !important;
-	background-color: #525b65 !important;
-	width: 16px !important;
-	height: 16px !important;
+#folderTree li[data-folder-type="sent"] > .container > .icon {
+    mask-image: url("Icons/sent.svg") !important;
+    mask-repeat: no-repeat !important;
+    mask-size: 16px 16px !important;
+    mask-position: center !important;
+    background-color: var(--folder-color-sent) !important;
 }
 
 .tab-icon-image[src*="chrome://messenger/skin/icons/new/compact/spam.svg"] {
@@ -796,175 +935,31 @@ tr.card-layout.children span.subject {
 }
 
 
-#placeholderNoMessages::before {
-	background-image: url("Icons/mail.svg") !important;
-}
+/* =====================================================
+   DARK MODE
+   ===================================================== */
 
-.tab-icon-image {
-	stroke: #fff0 !important;
-}
-
-#threadPaneQuickFilterButton {
-	background-image: url("Icons/filter.svg") !important;
-}
-
-#threadPaneDisplayButton {
-	background-image: url("Icons/list.svg") !important;
-}
-
-#threadPaneDisplayButton,
-#displayButton {
-	background-image: url("Icons/list.svg") !important;
-}
-
-#booksPaneCreateList {
-	background-image: url("Icons/book.svg") !important;
-}
-
-.bookRow-icon {
-	background-image: url("Icons/notepad-person.svg") !important;
-}
-
-#cards[rows="ab-card-row"] {
-	border-top: 0px solid var(--splitter-color) !important;
-}
-
-#threadTree[rows="thread-card"] .card-layout td .card-container .read-status {
-	content: var(--read-status-icon) !important;
-	height: var(--read-status-size) !important;
-	width: var(--read-status-size) !important;
-	fill: #4ade8000 !important;
-	stroke: #16a34a00 !important;
-	margin-left: 0 !important;
-	/* assuming _ was a placeholder */
-}
-
-tr.table-layout.selected.current {
-	color: #45a0ef !important;
-}
-
-.thread-card-subject-container {
-	width: 85%;
-}
-
-@media (-moz-platform: windows) {
-	/* Make all titlebar buttons exactly 28px tall */
-	:root[customtitlebar] .titlebar-button,
-	:root[customtitlebar] #titlebar-min,
-	:root[customtitlebar] #titlebar-max,
-	:root[customtitlebar] #titlebar-close {
-		height: 29px !important;
-	}
-	
-	/* Override the close button hover to use #c42b1c */
-	:root[customtitlebar] .titlebar-close:hover {
-		background-color: #c42b1cfa !important;
-		stroke: white !important;
-	}
-
-/* Replace the maximize icon with custom SVG */
-	.titlebar-max {
-		-moz-default-appearance: -moz-window-button-maximize;
-		list-style-image: url("Titlebar_Icons/maximize-light.png") !important;
-		opacity: 0.9 !important;
-
-	}
-}
-
-/* Fix for compact mode on card headers */
-.sort-header-details {
-	display: none !important;
-}
-
-/* Target cards with approximately 2-row height */
-tr.card-layout[style*="height: 49px"] .sender,
-tr.card-layout[style*="height: 50px"] .sender {
-    font-size: 1rem !important;
-    font-weight: 500 !important;
-    margin-top: 5px !important;
-}
-
-/* Fix for more 3 dots icon */
-#otherActionsButton .toolbarbutton-icon {
-	display: none;
-}
-
-
-/* DARK MODE */
 @media (prefers-color-scheme: dark) {
 
+	/* Custom maximise icon — dark (Windows only) */
 	@media (-moz-platform: windows) {
-
-		/* Replace the maximize icon with custom SVG */
 		.titlebar-max {
 			-moz-default-appearance: -moz-window-button-maximize;
 			list-style-image: url("Titlebar_Icons/maximize-dark.png") !important;
 			opacity: 0.9 !important;
-
 		}
 	}
 
 	#placeholderNoMessages::before {
-	background-image: url("Icons/mail-dark.svg") !important;
-	}
-	
-	.toolbarbutton-1:hover {
-		background-color: #272727 !important;
+		background-image: url("Icons/mail-dark.svg") !important;
 	}
 
-	.thread-card-subject-container {
-		color: #d1d1d1;
-		font-size: 0.96rem !important;
-	}
-
-	.notification-button .button-text,
-	.notification-button .button-icon {
-	  color: black !important;
-	  fill: black !important;  
-	  filter: none !important;    
-	  opacity: 1 !important;   
-	}
-	.notification-button.button-menu-list {
-	  stroke: #000 !important;
-	}
-
-	:is(ul, ol)[role="tree"] li.selected.current>.container {
-		border-color: #515151 !important;
-		background-color: #515151 !important;
-	}
-
-	/* unfocused or junk card specifically */
-	#threadTree[rows="thread-card"]:not(:focus, :focus-within) .card-layout.selected.current .card-container,
-	#threadTree[rows="thread-card"]:not(:focus, :focus-within) .card-layout[data-properties~="junk"].selected.current .card-container {
-		background-color: #515151 !important;
-		border: 1px solid #1f1f1f !important;
-	}
-
-	/* force the card container's background directly */
-	[is="tree-view-table-body"] .card-layout.selected.current .card-container {
-		background-color: #292929 !important;
-		border: 1px solid #1f1f1f !important;
-	}
-
-	#messageHeader:not(.message-header-buttons-only-icons) .toolbarbutton-1.message-header-view-button:not([is="toolbarbutton-menu-button"]) {
-		border-color: #1f1f1f !important;
-	}
-
-	#hdrReplyAllButton .toolbarbutton-menubutton-button,
-	#hdrReplyAllButton .toolbarbutton-menubutton-dropmarker,
-	#hdrReplyListButton .toolbarbutton-menubutton-button,
-	#hdrReplyListButton .toolbarbutton-menubutton-dropmarker {
-		border-color: #1f1f1f !important;
-	}
-	
-	#hdrReplyListButton .toolbarbutton-menubutton-button,
-	#hdrReplyListButton .toolbarbutton-menubutton-dropmarker {
-	  border: 1px solid #1f1f1f !important;
-	  box-sizing: border-box !important;
-	}
-	
 	.toolbarbutton-1 {
 		background-color: #3a3a3a !important;
+	}
+
+	.toolbarbutton-1:hover {
+		background-color: #272727 !important;
 	}
 
 	.tabmail-tab[selected="true"] {
@@ -975,6 +970,62 @@ tr.card-layout[style*="height: 50px"] .sender {
 		background-color: #262629b8 !important;
 	}
 
+	.thread-card-subject-container {
+		color: #d1d1d1;
+		font-size: 0.96rem !important;
+	}
+
+	/* Notification button text/icon colour fix */
+	.notification-button .button-text,
+	.notification-button .button-icon {
+		color: black !important;
+		fill: black !important;
+		filter: none !important;
+		opacity: 1 !important;
+	}
+
+	.notification-button.button-menu-list {
+		stroke: #000 !important;
+	}
+
+	/* Selected folder row */
+	:is(ul, ol)[role="tree"] li.selected.current > .container {
+		border-color: #515151 !important;
+		background-color: #515151 !important;
+	}
+
+	/* Unfocused selected card */
+	#threadTree[rows="thread-card"]:not(:focus, :focus-within) .card-layout.selected.current .card-container,
+	#threadTree[rows="thread-card"]:not(:focus, :focus-within) .card-layout[data-properties~="junk"].selected.current .card-container {
+		background-color: #515151 !important;
+		border: 1px solid #1f1f1f !important;
+	}
+
+	/* Focused selected card */
+	[is="tree-view-table-body"] .card-layout.selected.current .card-container {
+		background-color: #292929 !important;
+		border: 1px solid #1f1f1f !important;
+	}
+
+	/* Message header button borders */
+	#messageHeader:not(.message-header-buttons-only-icons) .toolbarbutton-1.message-header-view-button:not([is="toolbarbutton-menu-button"]) {
+		border-color: #1f1f1f !important;
+	}
+
+	#hdrReplyAllButton .toolbarbutton-menubutton-button,
+	#hdrReplyAllButton .toolbarbutton-menubutton-dropmarker,
+	#hdrReplyListButton .toolbarbutton-menubutton-button,
+	#hdrReplyListButton .toolbarbutton-menubutton-dropmarker {
+		border-color: #1f1f1f !important;
+	}
+
+	#hdrReplyListButton .toolbarbutton-menubutton-button,
+	#hdrReplyListButton .toolbarbutton-menubutton-dropmarker {
+		border: 1px solid #1f1f1f !important;
+		box-sizing: border-box !important;
+	}
+
+	/* Filter and display button icons — dark variants */
 	#threadPaneQuickFilterButton {
 		background-image: url("Icons/filter-dark.svg") !important;
 	}
@@ -982,14 +1033,4 @@ tr.card-layout[style*="height: 50px"] .sender {
 	#threadPaneDisplayButton {
 		background-image: url("Icons/list-dark.svg") !important;
 	}
-
-
 }
-
-
-
-
-
-
-
-
