@@ -1,6 +1,6 @@
 /* FLUENTBIRD - A FLUENT DESIGN THEME FOR THUNDERBIRD  */
 /*     Created by Danny King - www.dannyking.co.uk     */
-/*                   v1.1.0 RELEASE                    */
+/*                   v1.1.1 RELEASE                    */
 /*        DISTRIBUTED UNDER THE MIT LICENSE            */
 
 /* =====================================================
@@ -206,11 +206,15 @@
 
 /* Folder icon overrides */
 #folderTree li[data-folder-type="inbox"] > .container > .icon {
-	mask-image: url("Icons/inbox.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 16px 16px !important;
-	mask-position: center !important;
-	background-color: #5aa4ef !important;
+    content: none !important;
+    mask-image: url("Icons/inbox.svg") !important;
+    mask-repeat: no-repeat !important;
+    mask-size: 16px 16px !important;
+    mask-position: center !important;
+    background-color: #5aa4ef !important;
+}
+#folderTree li[data-folder-type="inbox"] > .container > .icon[style*="--icon-color"] {
+    background-color: var(--icon-color) !important;
 }
 
 #folderTree li[data-folder-type="drafts"] > .container > .icon {
@@ -259,6 +263,19 @@
 	background-color: #6aadb5 !important;
 }
 
+/* Templates Icon */
+#folderTree li[data-folder-type="templates"] > .container > .icon {
+    content: none !important;
+    mask-image: url("Icons/templates.svg") !important;
+    mask-repeat: no-repeat !important;
+    mask-size: 16px 16px !important;
+    mask-position: center !important;
+    background-color: #21a366 !important; /* replace with your preferred colour */
+}
+#folderTree li[data-folder-type="templates"] > .container > .icon[style*="--icon-color"] {
+    background-color: var(--icon-color) !important;
+}
+
 /* Generic folder icon */
 #folderTree li:not([data-folder-type]) > .container > .icon {
     content: none !important;
@@ -273,16 +290,19 @@
     background-color: var(--icon-color) !important;
 }
 
-/* Tag folder icons */
+/* Tag folder icons — covers ALL tags including custom ones */
 #folderTree li[data-tag-key] > .container > .icon {
-	width: 16px !important;
-	height: 16px !important;
-	mask-image: url("Icons/ic_fluent_tag_24_filled.svg") !important;
-	mask-repeat: no-repeat !important;
-	mask-size: 16px 16px !important;
-	mask-position: center !important;
+    display: block !important; 
+    width: 16px !important;
+    height: 16px !important;
+    background-color: var(--icon-color) !important; 
+    mask-image: url("Icons/ic_fluent_tag_24_filled.svg") !important;
+    mask-repeat: no-repeat !important;
+    mask-size: 16px 16px !important;
+    mask-position: center !important;
 }
 
+/* Override with tag back-color for the 5 built-in labels */
 #folderTree li[data-tag-key="$label1"] > .container > .icon { background-color: var(--tag-\$label1-backcolor) !important; }
 #folderTree li[data-tag-key="$label2"] > .container > .icon { background-color: var(--tag-\$label2-backcolor) !important; }
 #folderTree li[data-tag-key="$label3"] > .container > .icon { background-color: var(--tag-\$label3-backcolor) !important; }
@@ -950,6 +970,12 @@ global-search-bar {
 		}
 	}
 
+	/* Make unread messages text lighter */
+	
+	.unread > .container > .unread-count {
+	color: #7cb8fa !important;
+	}
+	
 	#placeholderNoMessages::before {
 		background-image: url("Icons/mail-dark.svg") !important;
 	}
