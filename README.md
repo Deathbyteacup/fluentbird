@@ -30,14 +30,14 @@ This is the first stable release of Fluentbird, however, there may still be some
 
 There are now issue templates, when reporting issues, please let me know exactly which OS and version you're using, the version of Thunderbird, and any specific settings related to the bug. Thanks!
 
-1.1.0 Release Notes
+1.1.1 Release Notes
 --------
-- This is a major refactoring of FluentBird. The code has been reorganised and made more efficent, and commented.
-- NEW FEATURE: There is now a seperate CSS file for custom overrides. You can now add any personal customisations to custom.css and retain these when you upgrade to future verions.
-- Folder icons now take on custom colors.
-- Tag icons now take on their correct / custom colors.
-- Mailboxes now have a custom icon, which can also take on a custom color.
-- Fixes a regression in 1.0.6 that saw the fluent icons clash with the default Thunderbird icons.
+- Fixes an issue where custom tags did not display an icon.
+- Fixes an issue where the Templates folder had no icon, now uses a new, fluent icon.
+- Fixes an issue where the unread counter was hard to read in dark mode.
+- Fixes an issue where the inbox icon could not take on a custom color.
+
+Note this release has new icons, it is suggested downloading the icons folder and replacing it when updating, not just the css file.
 
 Credits
 --------
