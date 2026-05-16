@@ -644,7 +644,6 @@ tree-view[data-show-grouped-by-sort="true"] .card-layout.children *:hover {
 
 #hdrReplyListButton .toolbarbutton-menubutton-button,
 #hdrReplyListButton .toolbarbutton-menubutton-dropmarker {
-	border: 1px solid #ececee !important;
 	box-sizing: border-box !important;
 }
 
@@ -1047,7 +1046,6 @@ global-search-bar {
 
 	#hdrReplyListButton .toolbarbutton-menubutton-button,
 	#hdrReplyListButton .toolbarbutton-menubutton-dropmarker {
-		border: 1px solid #1f1f1f !important;
 		box-sizing: border-box !important;
 	}
 
