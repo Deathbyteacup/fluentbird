@@ -634,7 +634,7 @@ tree-view[data-show-grouped-by-sort="true"] .card-layout.children *:hover {
 	border-color: #ececee !important;
 }
 
-#hdrReplyAllButton {
+#hdrReplyAllButton, #hdrReplyListButton {
 	border-radius: var(--button-border-radius) !important;
 }
 
