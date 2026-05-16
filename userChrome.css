@@ -1044,11 +1044,6 @@ global-search-bar {
 		border-color: #1f1f1f !important;
 	}
 
-	#hdrReplyListButton .toolbarbutton-menubutton-button,
-	#hdrReplyListButton .toolbarbutton-menubutton-dropmarker {
-		box-sizing: border-box !important;
-	}
-
 	/* Filter and display button icons — dark variants */
 	#threadPaneQuickFilterButton {
 		background-image: url("Icons/filter-dark.svg") !important;
