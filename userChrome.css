@@ -586,9 +586,9 @@ tree-view[data-show-grouped-by-sort="true"] .card-layout.children *:hover {
 /* Info bar (e.g. remote content notice), credit jevandusen */
 .infobar.animated:not([value="maybeScam"]) {
 	width: 98% !important;
-	margin: auto !important;
+	margin-inline: auto !important;
 	--message-bar-background-color: #e6f2fa !important;
-	margin-bottom: 10px !important;
+	margin-block-end: 10px !important;
 }
 
 .infobar.animated:not([value="maybeScam"]) .notification-button.small-button.footer-button.button-menu-list {
