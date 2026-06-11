@@ -30,14 +30,13 @@ This is the first stable release of Fluentbird, however, there may still be some
 
 There are now issue templates, when reporting issues, please let me know exactly which OS and version you're using, the version of Thunderbird, and any specific settings related to the bug. Thanks!
 
-1.1.1 Release Notes
+1.1.2 Release Notes
 --------
-- Fixes an issue where custom tags did not display an icon.
-- Fixes an issue where the Templates folder had no icon, now uses a new, fluent icon.
-- Fixes an issue where the unread counter was hard to read in dark mode.
-- Fixes an issue where the inbox icon could not take on a custom color.
+- Fixes an issue where the border of the Reply List button had a double border.
+- Makes border radius consistant across Reply All and Reply List buttons.
+- Fixes animations and size reflow for the Infobar (blocked content / spam warnings)
 
-Note this release has new icons, it is suggested downloading the icons folder and replacing it when updating, not just the css file.
+Thanks to frabera for the fixes.
 
 Credits
 --------
