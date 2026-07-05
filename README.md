@@ -26,17 +26,13 @@ Features
 - Supports both dark and light modes (system theme)
 - Enhances and highlights Mica transparency on Windows 11 systems
 
-This is the first stable release of Fluentbird, however, there may still be some bugs and issues, specifically when using operating systems other than Windows 11.
+There may be some bugs and issues, specifically when using operating systems other than Windows 11. 
+If reporting an issue, please use the report templates, including the OS and version you're using, the version of Thunderbird, and any specific settings related to the bug. 
+Thanks!
 
-There are now issue templates, when reporting issues, please let me know exactly which OS and version you're using, the version of Thunderbird, and any specific settings related to the bug. Thanks!
-
-1.1.2 Release Notes
+1.1.3 Release Notes
 --------
-- Fixes an issue where the border of the Reply List button had a double border.
-- Makes border radius consistant across Reply All and Reply List buttons.
-- Fixes animations and size reflow for the Infobar (blocked content / spam warnings)
-
-Thanks to frabera for the fixes.
+- Fix card spacing in 2-row view
 
 Credits
 --------
@@ -80,7 +76,6 @@ Setup Instructions
 
 Known Issues
 ------------
-- This is a beta release. Expect bugs and incomplete styling.
 - Untested on Mac and Linux (should work, but without Mica).
 - Report issues via the GitHub repository.
 
