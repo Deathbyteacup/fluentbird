@@ -17,10 +17,25 @@
    LAYOUT & WINDOW CHROME
    ===================================================== */
 
-/* Rounded top-left clip on main content area */
+:root {
+	--toolbox-background-color: #cde0ee !important;
+	--toolbar-background-color: #cde0ee !important;
+	--tabs-toolbar-background-color: #cde0ee !important;
+	--lwt-accent-color: #cde0ee !important;
+}
+
+:root,
+body,
+#messengerWindow {
+	background-color: #cde0ee !important;
+}
+
+/* Rounded clip on main content area with background frame */
 #messengerBody {
-	opacity: 90%;
-	border-top-left-radius: 12px !important;
+	opacity: 1 !important;
+	background-color: #f1f3f4 !important;
+	border-radius: 12px !important;
+	margin: 0 8px 8px 0 !important;
 	overflow: hidden !important;
 }
 
@@ -58,31 +73,86 @@
 
 
 /* =====================================================
-   TAB BAR
+   HEADER, UNIFIED TOOLBAR & TAB BAR
    ===================================================== */
 
-#tabs-toolbar {
-	background-color: #fff0 !important;
+:root #navigation-toolbox,
+:root[lwtheme] #navigation-toolbox,
+:root:not([lwtheme]) #navigation-toolbox,
+#navigation-toolbox,
+#titlebar,
+#titlebar > *,
+unified-toolbar,
+#unifiedToolbarContainer,
+#unifiedToolbar,
+#unifiedToolbarContent,
+#toolbar-menubar,
+#tabs-toolbar,
+toolbar#tabs-toolbar,
+#tabmail-tabs,
+#tabmail-arrowscrollbox {
+	background-color: #cde0ee !important;
 	background-image: none !important;
+	border: none !important;
+	border-bottom: none !important;
+	border-block-end: none !important;
 	box-shadow: none !important;
+}
+
+#tabs-toolbar {
 	margin-bottom: 8px !important;
 }
 
 .tabmail-tab {
-	border-radius: 6px !important;
+	border-radius: 8px !important;
+	transition: background-color 0.15s ease, color 0.15s ease !important;
 }
 
+/* Active tab (macOS style): solid white card with subtle shadow, bold text and Apple blue accent line */
 .tabmail-tab[selected="true"] {
-	box-shadow: 0 2px 8px -5px #9c9c9c !important;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06) !important;
 }
 
 .tab-background[selected="true"] {
-	background-color: #ffffffb8 !important;
+	background-color: #ffffff !important;
+	background-image: none !important;
+	border-radius: 8px !important;
 }
 
-/* Remove active-tab indicator line */
-.tab-line {
+.tabmail-tab[selected="true"] .tab-label,
+.tabmail-tab[selected="true"] .tab-text {
+	font-weight: 700 !important;
+	color: #0f172a !important;
+}
+
+/* Active-tab Apple blue accent indicator line */
+.tab-line[selected="true"] {
+	height: 3px !important;
+	background-color: #007aff !important;
+	border-radius: 2px !important;
+	margin: 2px 8px 0 8px !important;
+	opacity: 1 !important;
+}
+
+.tab-line:not([selected="true"]) {
 	height: 0px !important;
+}
+
+/* Inactive tabs: muted text, subtle hover */
+.tabmail-tab:not([selected="true"]) .tab-label,
+.tabmail-tab:not([selected="true"]) .tab-text {
+	color: #334155 !important;
+	opacity: 0.75 !important;
+}
+
+.tabmail-tab:hover:not([selected="true"]) .tab-background {
+	background-color: rgba(255, 255, 255, 0.45) !important;
+	border-radius: 8px !important;
+}
+
+.tabmail-tab:hover:not([selected="true"]) .tab-label,
+.tabmail-tab:hover:not([selected="true"]) .tab-text {
+	opacity: 1 !important;
 }
 
 #tabmail-arrowscrollbox {
@@ -105,9 +175,13 @@
    ===================================================== */
 
 #spacesToolbar {
-	background-color: #fff0 !important;
+	background-color: #cde0ee !important;
 	background-image: none !important;
 	border: 0px !important;
+}
+
+#spacesToolbar .spaces-toolbar-top-container {
+	margin-top: 91px !important;
 }
 
 /* Hide default icon images; replaced via background-image below */
@@ -191,13 +265,36 @@
 
 
 /* =====================================================
-   FOLDER TREE
+   FOLDER TREE & PANE
    ===================================================== */
 
-/* Account-level row: larger text, no icon */
+#folderPane {
+	padding-inline-start: 46px !important;
+}
+
+#folderPaneHeaderBar {
+	flex-direction: row !important;
+	justify-content: flex-start !important;
+	gap: 6px !important;
+}
+
+#folderPaneWriteMessage {
+	order: 1 !important;
+}
+
+#folderPaneGetMessages {
+	order: 2 !important;
+}
+
+#folderPaneMoreButton {
+	order: 3 !important;
+	margin-inline-start: auto !important;
+}
+
+/* Account-level row: 1 font-step larger (1.02rem), clean hierarchy */
 #folderTree li[data-server-type] > .container > .name {
-	font-weight: normal !important;
-	font-size: 1.18rem !important;
+	font-weight: 600 !important;
+	font-size: 1.02rem !important;
 }
 
 #folderTree li[data-server-type]:not(:first-of-type) > .container {
@@ -458,14 +555,27 @@ tr.card-layout.children span.subject {
 	font-size: 0.95em !important;
 }
 
-/* Unread indicator dot */
+/* Unread indicator dot (hidden on read messages, Apple-blue on unread/new) */
 #threadTree[rows="thread-card"] .card-layout td .card-container .read-status {
 	content: var(--read-status-icon) !important;
 	height: var(--read-status-size) !important;
 	width: var(--read-status-size) !important;
-	fill: #4ade8000 !important;
-	stroke: #16a34a00 !important;
+	fill: transparent !important;
+	stroke: transparent !important;
 	margin-left: 0 !important;
+}
+
+#threadTree[rows="thread-card"] .card-layout:is([data-properties~="unread"], [data-properties~="new"]) td .card-container .read-status {
+	content: var(--icon-dot) !important;
+	fill: #007aff !important;
+	stroke: #007aff !important;
+}
+
+@media (prefers-color-scheme: dark) {
+	#threadTree[rows="thread-card"] .card-layout:is([data-properties~="unread"], [data-properties~="new"]) td .card-container .read-status {
+		fill: #0a84ff !important;
+		stroke: #0a84ff !important;
+	}
 }
 
 /* Unread indicator inline offset */
@@ -1038,6 +1148,47 @@ global-search-bar {
 
 @media (prefers-color-scheme: dark) {
 
+	:root {
+		--toolbox-background-color: #202023 !important;
+		--toolbar-background-color: #202023 !important;
+		--tabs-toolbar-background-color: #202023 !important;
+		--lwt-accent-color: #202023 !important;
+	}
+
+	:root,
+	body,
+	#messengerWindow {
+		background-color: #202023 !important;
+	}
+
+	:root #navigation-toolbox,
+	:root[lwtheme] #navigation-toolbox,
+	:root:not([lwtheme]) #navigation-toolbox,
+	#navigation-toolbox,
+	#titlebar,
+	#titlebar > *,
+	unified-toolbar,
+	#unifiedToolbarContainer,
+	#unifiedToolbar,
+	#unifiedToolbarContent,
+	#toolbar-menubar,
+	#tabs-toolbar,
+	toolbar#tabs-toolbar,
+	#tabmail-tabs,
+	#tabmail-arrowscrollbox,
+	#spacesToolbar {
+		background-color: #202023 !important;
+		background-image: none !important;
+		border: none !important;
+		border-bottom: none !important;
+		border-block-end: none !important;
+		box-shadow: none !important;
+	}
+
+	#messengerBody {
+		background-color: #1c1c1f !important;
+	}
+
 	/* Custom maximise icon — dark (Windows only) */
 	@media (-moz-platform: windows) {
 		.titlebar-max {
@@ -1065,12 +1216,46 @@ global-search-bar {
 		background-color: #272727 !important;
 	}
 
+	/* Active tab (macOS style in dark mode) */
 	.tabmail-tab[selected="true"] {
-		box-shadow: 0 2px 8px -5px #9c9c9c !important;
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
 	}
 
 	.tab-background[selected="true"] {
-		background-color: #262629b8 !important;
+		background-color: #2c2c30 !important;
+		background-image: none !important;
+		border-radius: 8px !important;
+	}
+
+	.tabmail-tab[selected="true"] .tab-label,
+	.tabmail-tab[selected="true"] .tab-text {
+		font-weight: 700 !important;
+		color: #ffffff !important;
+	}
+
+	/* Active-tab Apple blue indicator line in dark mode */
+	.tab-line[selected="true"] {
+		height: 3px !important;
+		background-color: #0a84ff !important;
+		border-radius: 2px !important;
+		margin: 2px 8px 0 8px !important;
+		opacity: 1 !important;
+	}
+
+	.tabmail-tab:not([selected="true"]) .tab-label,
+	.tabmail-tab:not([selected="true"]) .tab-text {
+		color: #94a3b8 !important;
+		opacity: 0.75 !important;
+	}
+
+	.tabmail-tab:hover:not([selected="true"]) .tab-background {
+		background-color: rgba(255, 255, 255, 0.08) !important;
+		border-radius: 8px !important;
+	}
+
+	.tabmail-tab:hover:not([selected="true"]) .tab-label,
+	.tabmail-tab:hover:not([selected="true"]) .tab-text {
+		opacity: 1 !important;
 	}
 
 	.thread-card-subject-container {
@@ -1139,4 +1324,728 @@ global-search-bar {
 
 .card-layout:not([data-properties~="dummy"]) .card-container {
 	min-height: 50px !important;
+}
+
+/* =====================================================
+   APPLE / macOS CALENDAR THEME FOR THUNDERBIRD
+   ===================================================== */
+
+/* Base Font & Calendar Layout */
+#calendarTabPanel,
+#calendarContent,
+calendar-minimonth,
+calendar-month-view,
+calendar-week-view,
+calendar-day-view,
+calendar-multiweek-view {
+	font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif !important;
+}
+
+/* 1. Left Sidebar (calSidebar) */
+#calSidebar {
+	background-color: #f7f7f9 !important;
+	border-inline-end: 1px solid rgba(0, 0, 0, 0.08) !important;
+	padding-left: 44px !important;
+}
+
+#calSidebar .sidebar-panel-header {
+	background-color: transparent !important;
+	border: none !important;
+	padding: 10px 14px 6px 14px !important;
+}
+
+/* New Event button styled as Apple "+" pill / button */
+#sidePanelNewEvent {
+	background-color: #007aff !important;
+	color: #ffffff !important;
+	border-radius: 8px !important;
+	border: none !important;
+	font-weight: 600 !important;
+	box-shadow: 0 1px 3px rgba(0, 122, 255, 0.3) !important;
+	transition: background-color 0.15s ease !important;
+}
+#sidePanelNewEvent:hover {
+	background-color: #0062cc !important;
+}
+
+/* Calendar list styling */
+#calendar-list-pane {
+	background: transparent !important;
+}
+
+#calendarListHeader {
+	font-size: 0.75rem !important;
+	font-weight: 700 !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.5px !important;
+	color: #8e8e93 !important;
+	padding: 8px 14px 4px 14px !important;
+}
+
+#calendar-list > li {
+	border-radius: 8px !important;
+	padding: 5px 10px !important;
+	margin: 2px 8px !important;
+	font-size: 0.88rem !important;
+	font-weight: 500 !important;
+	color: #1d1d1f !important;
+	transition: background-color 0.15s ease !important;
+}
+
+#calendar-list > li:hover {
+	background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+#calendar-list > li.selected {
+	background-color: rgba(0, 122, 255, 0.12) !important;
+}
+
+/* Calendar Checkbox circles */
+#calendar-list > li input[type="checkbox"],
+#calendar-list > li .checkbox-icon {
+	border-radius: 50% !important;
+}
+
+/* 2. Mini-Month Calendar Picker (Apple style) */
+calendar-minimonth {
+	--mmMainBackground: transparent !important;
+	--mmMainBorderColor: transparent !important;
+	--mmDayTodayColor: #ffffff !important;
+	--mmDayTodayBackground: #ff3b30 !important;
+	--mmDayTodayBorderColor: transparent !important;
+	--mmDayBorderRadius: 50% !important;
+	--mmDaySelectedColor: #1d1d1f !important;
+	--mmDaySelectedBackground: rgba(0, 0, 0, 0.08) !important;
+	--mmDaySelectedBorderColor: transparent !important;
+	--mmDaySelectedTodayBackground: #ff3b30 !important;
+	--mmDaySelectedTodayBorderColor: transparent !important;
+	--mmHighlightBackground: #ff3b30 !important;
+	--mmHighlightColor: #ffffff !important;
+	padding: 0px !important;
+	min-inline-size: 100px !important;
+	max-width: 100% !important;
+}
+
+.minimonth-day,
+.minimonth-week {
+	padding: 2px !important;
+	font-size: 0.8rem !important;
+}
+
+.minimonth-cal-box {
+	padding: 0 !important;
+}
+
+.minimonth-month-box {
+	font-size: 0.75rem !important;
+	font-weight: 700 !important;
+	color: #1d1d1f !important;
+	margin-bottom: 6px !important;
+}
+
+.minimonth-nav-btn {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+/* 3. Top Navigation Header & Segmented View Switcher (#calendarViewHeader) */
+#calendarViewHeader {
+	background-color: #ffffff !important;
+	border-block-end: 1px solid rgba(0, 0, 0, 0.08) !important;
+	padding: 10px 18px !important;
+	min-height: 48px !important;
+}
+
+/* Month / Interval Title (e.g. "April 2025") */
+#intervalDescription {
+	font-size: 1.35rem !important;
+	font-weight: 700 !important;
+	color: #1d1d1f !important;
+	letter-spacing: -0.3px !important;
+	margin-inline-start: 12px !important;
+}
+
+/* Navigation buttons (< Today >) */
+#calendarControls .button-group {
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 4px !important;
+}
+
+#previousViewButton,
+#nextViewButton {
+	background-color: rgba(0, 0, 0, 0.04) !important;
+	border: 1px solid rgba(0, 0, 0, 0.08) !important;
+	border-radius: 50% !important;
+	width: 28px !important;
+	height: 28px !important;
+	min-width: 28px !important;
+	min-height: 28px !important;
+	padding: 0 !important;
+	cursor: pointer !important;
+	transition: background-color 0.15s ease !important;
+}
+
+#previousViewButton:hover,
+#nextViewButton:hover {
+	background-color: rgba(0, 0, 0, 0.09) !important;
+}
+
+#todayViewButton {
+	background-color: #ffffff !important;
+	border: 1px solid rgba(0, 0, 0, 0.15) !important;
+	border-radius: 6px !important;
+	padding: 3px 12px !important;
+	font-size: 0.82rem !important;
+	font-weight: 600 !important;
+	color: #1d1d1f !important;
+	cursor: pointer !important;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+	transition: background-color 0.15s ease !important;
+}
+
+#todayViewButton:hover {
+	background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* macOS Segmented Control for Views (Day | Week | Multiweek | Month) */
+#viewToggle.calview-toggle {
+	background-color: rgba(0, 0, 0, 0.06) !important;
+	border-radius: 8px !important;
+	padding: 2px !important;
+	display: inline-flex !important;
+	border: none !important;
+}
+
+.calview-toggle-item {
+	background-color: transparent !important;
+	border: none !important;
+	border-radius: 6px !important;
+	padding: 4px 14px !important;
+	font-size: 0.82rem !important;
+	font-weight: 500 !important;
+	color: #555558 !important;
+	cursor: pointer !important;
+	transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.calview-toggle-item:hover {
+	color: #1d1d1f !important;
+}
+
+.calview-toggle-item[aria-selected="true"] {
+	background-color: #ffffff !important;
+	color: #1d1d1f !important;
+	font-weight: 600 !important;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 4. Calendar Main Grid & Views (#view-box) */
+#view-box {
+	background-color: #ffffff !important;
+}
+
+calendar-day-view,
+calendar-week-view,
+calendar-multiweek-view,
+calendar-month-view {
+	background-color: #ffffff !important;
+	--viewBackground: #ffffff !important;
+	--viewBorderColor: rgba(0, 0, 0, 0.07) !important;
+}
+
+/* Day column headers */
+.day-column-heading {
+	background-color: #ffffff !important;
+	border-block: 1px solid rgba(0, 0, 0, 0.07) !important;
+	border-inline-start: 1px solid rgba(0, 0, 0, 0.07) !important;
+	font-size: 0.85rem !important;
+	font-weight: 600 !important;
+	color: #8e8e93 !important;
+	padding: 6px 4px !important;
+}
+
+/* Today column header (macOS Red accent) */
+.day-column-today .day-column-heading {
+	color: #ff3b30 !important;
+	font-weight: 700 !important;
+}
+
+/* Time column on the left */
+.multiday-timebar {
+	background-color: #ffffff !important;
+	border-inline-end: 1px solid rgba(0, 0, 0, 0.07) !important;
+}
+
+.multiday-timebar-time {
+	font-size: 0.78rem !important;
+	font-weight: 500 !important;
+	color: #8e8e93 !important;
+	padding-inline-end: 8px !important;
+}
+
+/* Grid hour lines */
+.multiday-hour-box {
+	border-block-end: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Current Time Indicator (Red line & Dot) */
+.timeIndicator {
+	border-block-start: 2px solid #ff3b30 !important;
+	opacity: 1 !important;
+	z-index: 10 !important;
+}
+
+.multiday-timebar-now-indicator {
+	background-color: #ff3b30 !important;
+	border: none !important;
+	border-radius: 50% !important;
+	inline-size: 8px !important;
+	block-size: 8px !important;
+	margin-block-start: -4px !important;
+	z-index: 11 !important;
+}
+
+/* 5. Event Cards (Pastel Apple Calendar style) */
+calendar-event-box:not([hidden]) {
+	margin-inline: 2px !important;
+}
+
+.calendar-color-box {
+	min-block-size: 18px !important;
+	border-radius: 6px !important;
+	/* Soft pastel background from calendar color */
+	background-color: color-mix(in srgb, var(--item-backcolor) 18%, #ffffff) !important;
+	color: #1d1d1f !important;
+	/* Vibrant solid left accent bar */
+	border-inline-start: 4px solid var(--item-backcolor) !important;
+	border-block: 1px solid color-mix(in srgb, var(--item-backcolor) 25%, transparent) !important;
+	border-inline-end: 1px solid color-mix(in srgb, var(--item-backcolor) 25%, transparent) !important;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+	padding: 2px 4px !important;
+	transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+}
+
+.calendar-color-box:hover {
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Selected Event Card */
+calendar-month-day-box-item[selected="true"].calendar-color-box,
+calendar-event-box[selected="true"].calendar-color-box,
+calendar-editable-item[selected="true"].calendar-color-box {
+	background-color: color-mix(in srgb, var(--item-backcolor) 28%, #ffffff) !important;
+	outline: 2px solid #007aff !important;
+	outline-offset: -1px !important;
+	box-shadow: 0 2px 8px rgba(0, 122, 255, 0.25) !important;
+}
+
+/* Event Title & Details */
+.event-name-label {
+	font-weight: 600 !important;
+	font-size: 0.85rem !important;
+	color: #1d1d1f !important;
+}
+
+.item-time-label {
+	font-weight: 500 !important;
+	font-size: 0.78rem !important;
+	color: color-mix(in srgb, var(--item-backcolor) 80%, #1d1d1f) !important;
+}
+
+.location-desc {
+	font-size: 0.78rem !important;
+	color: #6e6e73 !important;
+}
+
+/* All-Day Events in Week/Day View */
+.allday-events-list .calendar-color-box {
+	border-radius: 4px !important;
+	border: none !important;
+	border-inline-start: none !important;
+	background-color: var(--item-backcolor) !important;
+	color: #ffffff !important;
+	font-weight: 600 !important;
+	padding: 2px 6px !important;
+	margin-block: 1px !important;
+}
+
+/* 6. Event Info / Summary Dialog */
+#calendar-summary-dialog {
+	min-width: 950px !important;
+	max-width: 950px !important;
+	min-height: 800px !important;
+	max-height: 800px !important;
+	overflow: hidden !important;
+}
+
+#calendar-summary-dialog body {
+	background-color: transparent !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	overflow: hidden !important;
+}
+
+#calendar-summary-dialog dialog {
+	background-color: #ffffff !important;
+	border: 12px solid #cde0ee !important;
+	border-radius: 20px !important;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1) !important;
+	
+	/* HARDCODE the exact dimensions to perfectly match the window client area! */
+	width: 950px !important;
+	height: 800px !important;
+	min-width: 950px !important;
+	max-width: 950px !important;
+	min-height: 800px !important;
+	max-height: 800px !important;
+	
+	margin: 0 !important;
+	box-sizing: border-box !important;
+	display: flex !important;
+	flex-direction: column !important;
+	align-items: stretch !important;
+	overflow: hidden !important;
+}
+
+#calendar-summary-dialog #summary-toolbox {
+	background-color: #f6f6f8 !important;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+	padding: 4px 8px !important;
+	flex-shrink: 0 !important;
+}
+
+#calendar-summary-dialog #summary-toolbar {
+	background: transparent !important;
+	border: none !important;
+}
+
+#calendar-summary-dialog #calendar-item-summary {
+	background-color: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+	padding: 14px 18px !important;
+	flex: 1 !important;
+	overflow-y: auto !important;
+	overflow-x: hidden !important;
+	box-sizing: border-box !important;
+	width: 100% !important;
+	max-width: 100% !important;
+	min-width: 0 !important;
+}
+
+#calendar-summary-dialog .item-summary-box,
+#calendar-summary-dialog .item-attendees-description,
+#calendar-summary-dialog .item-description-box {
+	width: 100% !important;
+	max-width: 100% !important;
+	min-width: 0 !important;
+	box-sizing: border-box !important;
+}
+
+#calendar-summary-dialog .item-attendees-list-container,
+#calendar-summary-dialog .attendees-list {
+	flex-wrap: wrap !important;
+	max-width: 100% !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+#calendar-summary-dialog .calendar-summary-table {
+	width: 100% !important;
+	max-width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+#calendar-summary-dialog .item-description-box,
+#calendar-event-summary-dialog .item-description-box,
+#calendar-task-summary-dialog .item-description-box {
+	overflow-x: hidden !important;
+	overflow-y: auto !important;
+	max-width: 100% !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+#calendar-summary-dialog .item-description,
+#calendar-event-summary-dialog .item-description,
+#calendar-task-summary-dialog .item-description,
+#calendar-summary-dialog iframe.item-description {
+	margin: 2px 0 0 0 !important;
+	max-width: 100% !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+#calendar-summary-dialog #calendar-summary-dialog-custom-button-footer {
+	background-color: #f6f6f8 !important;
+	border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+	margin: 0 !important;
+	padding: 10px 16px !important;
+	margin-top: auto !important;
+	flex-shrink: 0 !important;
+}
+
+#calendar-summary-dialog-custom-button-footer button,
+.calendar-invitation-panel-response-buttons button {
+	border-radius: 8px !important;
+	padding: 5px 14px !important;
+	font-size: 0.85rem !important;
+	font-weight: 500 !important;
+	background-color: rgba(0, 0, 0, 0.06) !important;
+	border: none !important;
+	color: #1d1d1f !important;
+	cursor: pointer !important;
+	transition: background-color 0.15s ease !important;
+}
+
+#calendar-summary-dialog-custom-button-footer button:hover,
+.calendar-invitation-panel-response-buttons button:hover {
+	background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 7. Dark Mode Overrides for Calendar */
+@media (prefers-color-scheme: dark) {
+	#calSidebar {
+		background-color: #1c1c1e !important;
+		border-inline-end: 1px solid rgba(255, 255, 255, 0.1) !important;
+	}
+
+	#calendar-list > li {
+		color: #f5f5f7 !important;
+	}
+
+	#calendar-list > li:hover {
+		background-color: rgba(255, 255, 255, 0.08) !important;
+	}
+
+	calendar-minimonth {
+		--mmDaySelectedColor: #f5f5f7 !important;
+		--mmDaySelectedBackground: rgba(255, 255, 255, 0.15) !important;
+	}
+
+	.minimonth-month-box {
+		color: #f5f5f7 !important;
+	}
+
+	#calendarViewHeader,
+	#view-box,
+	calendar-day-view,
+	calendar-week-view,
+	calendar-multiweek-view,
+	calendar-month-view {
+		background-color: #1c1c1e !important;
+		--viewBackground: #1c1c1e !important;
+		--viewBorderColor: rgba(255, 255, 255, 0.1) !important;
+	}
+
+	#calendarViewHeader {
+		border-block-end: 1px solid rgba(255, 255, 255, 0.1) !important;
+	}
+
+	#intervalDescription {
+		color: #f5f5f7 !important;
+	}
+
+	#viewToggle.calview-toggle {
+		background-color: rgba(255, 255, 255, 0.1) !important;
+	}
+
+	.calview-toggle-item {
+		color: #a1a1a6 !important;
+	}
+
+	.calview-toggle-item:hover {
+		color: #ffffff !important;
+	}
+
+	.calview-toggle-item[aria-selected="true"] {
+		background-color: #2c2c2e !important;
+		color: #ffffff !important;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+	}
+
+	#todayViewButton {
+		background-color: #2c2c2e !important;
+		border: 1px solid rgba(255, 255, 255, 0.15) !important;
+		color: #f5f5f7 !important;
+	}
+
+	.day-column-heading,
+	.multiday-timebar {
+		background-color: #1c1c1e !important;
+		border-color: rgba(255, 255, 255, 0.08) !important;
+	}
+
+	/* Summary Dialog Dark Mode */
+	#calendar-summary-dialog dialog {
+		background-color: #242426 !important;
+		border: 12px solid #2e3a47 !important;
+		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+		color: #f5f5f7 !important;
+	}
+
+	#calendar-summary-dialog #summary-toolbox,
+	#calendar-summary-dialog #calendar-summary-dialog-custom-button-footer {
+		background-color: #1c1c1e !important;
+		border-color: rgba(255, 255, 255, 0.1) !important;
+	}
+
+	#calendar-summary-dialog #calendar-summary-dialog-custom-button-footer button,
+	.calendar-invitation-panel-response-buttons button {
+		background-color: rgba(255, 255, 255, 0.1) !important;
+		color: #f5f5f7 !important;
+	}
+
+	.multiday-hour-box {
+		border-block-end: 1px solid rgba(255, 255, 255, 0.06) !important;
+	}
+
+	.calendar-color-box {
+		background-color: color-mix(in srgb, var(--item-backcolor) 25%, #2c2c2e) !important;
+		color: #f5f5f7 !important;
+		border-block: 1px solid color-mix(in srgb, var(--item-backcolor) 40%, transparent) !important;
+		border-inline-end: 1px solid color-mix(in srgb, var(--item-backcolor) 40%, transparent) !important;
+	}
+
+	.event-name-label {
+		color: #ffffff !important;
+	}
+
+	.item-time-label {
+		color: color-mix(in srgb, var(--item-backcolor) 60%, #ffffff) !important;
+	}
+
+	.location-desc {
+		color: #a1a1a6 !important;
+	}
+
+	#calendar-summary-dialog dialog {
+		background-color: #1c1c1e !important;
+		border-color: #202023 !important; /* The dark frame */
+		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+	}
+
+	#calendar-summary-dialog #summary-toolbox,
+	#calendar-summary-dialog #calendar-summary-dialog-custom-button-footer {
+		background-color: #2c2c2e !important;
+		border-color: rgba(255, 255, 255, 0.1) !important;
+	}
+
+	#calendar-summary-dialog #calendar-item-summary {
+		background-color: transparent !important;
+		color: #f5f5f7 !important;
+	}
+
+	#calendar-summary-dialog-custom-button-footer button,
+	.calendar-invitation-panel-response-buttons button {
+		background-color: rgba(255, 255, 255, 0.12) !important;
+		color: #f5f5f7 !important;
+	}
+}
+
+/* =====================================================
+   CALENDAR EVENT TOOLTIP (hover preview)
+   Apple-design: white card, subtle shadow, grey labels
+   ===================================================== */
+
+#itemTooltip {
+	-moz-appearance: none !important;
+	appearance: none !important;
+	background: #eef4fb !important;
+	color: #1d1d1f !important;
+	border: 1px solid rgba(0, 100, 200, 0.18) !important;
+	border-radius: 12px !important;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16), 0 3px 8px rgba(0, 0, 0, 0.08) !important;
+	padding: 4px !important;
+}
+
+.tooltipBox {
+	padding: 10px 14px !important;
+	max-inline-size: 44em !important;
+}
+
+.tooltipHeaderTable {
+	border-spacing: 0 !important;
+}
+
+.tooltipHeaderLabel {
+	color: #637381 !important;
+	font-size: 0.72rem !important;
+	font-weight: 600 !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.4px !important;
+	text-align: end !important;
+	padding-inline-end: 10px !important;
+	white-space: nowrap !important;
+	vertical-align: top !important;
+	padding-block-start: 3px !important;
+}
+
+.tooltipHeaderValue {
+	color: #1d1d1f !important;
+	font-size: 0.88rem !important;
+	font-weight: 500 !important;
+	padding-block-end: 4px !important;
+}
+
+.tooltipBodySeparator {
+	block-size: 8px !important;
+}
+
+.tooltipBody {
+	color: #334155 !important;
+	font-size: 0.84rem !important;
+	font-weight: 400 !important;
+	line-height: 1.5 !important;
+	border-block-start: 1px solid rgba(0, 100, 200, 0.14) !important;
+	padding-block-start: 10px !important;
+	margin-block-start: 4px !important;
+	white-space: normal !important;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+	#itemTooltip {
+		background: #2c2c2e !important;
+		color: #f5f5f7 !important;
+		border: 1px solid rgba(255, 255, 255, 0.12) !important;
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+	}
+	.tooltipHeaderLabel {
+		color: #98989d !important;
+	}
+	.tooltipHeaderValue {
+		color: #f5f5f7 !important;
+	}
+	.tooltipBody {
+		color: #d1d1d6 !important;
+		border-block-start-color: rgba(255, 255, 255, 0.08) !important;
+	}
+}
+
+/* =====================================================
+   PREFERENCES & ACCOUNT SETTINGS SIDEBAR SPACING
+   Ensure proper breathing room next to Spaces Toolbar
+   ===================================================== */
+
+#pref-category-box,
+#accountTreeBox,
+#sidebar:has(categories-box) {
+	padding-inline-start: 48px !important;
+}
+
+
+
+/* Sidebar clearance for single message tabs and address book tabs */
+browser[src="about:message"],
+browser[id^="mailMessageTabBrowser"],
+browser[src="about:addressbook"],
+browser[id^="addressBookTabBrowser"] {
+	margin-inline-start: 46px !important;
+}
+
+/* Fix Global Search (Gloda) Tab Overlap with Spaces Toolbar */
+vbox[id^="glodaTab"] {
+	margin-inline-start: 46px !important;
 }

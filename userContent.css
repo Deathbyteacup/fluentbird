@@ -1,0 +1,76 @@
+/* Thunderbird userContent.css - Content & Editor Window Styling */
+
+@-moz-document url-prefix("about:blank") {
+	html, body {
+		overflow-x: hidden !important;
+		overflow-y: auto !important;
+		margin: 0 !important;
+		padding: 4px !important;
+		box-sizing: border-box !important;
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+	* {
+		box-sizing: border-box !important;
+		max-width: 100% !important;
+	}
+	p, div, span, a {
+		overflow-wrap: break-word !important;
+		word-break: break-word !important;
+		white-space: normal !important;
+	}
+	a {
+		word-break: break-all !important;
+	}
+}
+
+/* Preferences (Settings) & Account Settings Sidebar Spacing */
+@-moz-document url-prefix("about:preferences"), url-prefix("chrome://messenger/content/preferences/preferences.xhtml"), url-prefix("about:accountsettings"), url-prefix("chrome://messenger/content/messenger/AccountManager.xhtml") {
+	#pref-category-box,
+	#accountTreeBox {
+		padding-inline-start: 48px !important;
+	}
+}
+
+/* Mail Folder Pane Spacing & Account Font Size */
+@-moz-document url-prefix("chrome://messenger/content/messenger/about3Pane.xhtml"), url-prefix("about:3pane") {
+	#folderPane {
+		padding-inline-start: 46px !important;
+	}
+	#folderPaneHeaderBar {
+		flex-direction: row !important;
+		justify-content: flex-start !important;
+		gap: 6px !important;
+	}
+	#folderPaneWriteMessage {
+		order: 1 !important;
+	}
+	#folderPaneGetMessages {
+		order: 2 !important;
+	}
+	#folderPaneMoreButton {
+		order: 3 !important;
+		margin-inline-start: auto !important;
+	}
+	#folderTree li[data-server-type] > .container > .name {
+		font-weight: 600 !important;
+		font-size: 1.02rem !important;
+	}
+}
+
+/* Add-ons and Themes (about:addons) Sidebar Spacing */
+@-moz-document url-prefix("about:addons"), url-prefix("chrome://mozapps/content/extensions/aboutaddons.html") {
+	:root {
+		--sidebar-width: calc(var(--size-sidebar, 200px) + 48px) !important;
+	}
+	#sidebar {
+		padding-inline-start: 48px !important;
+		box-sizing: border-box !important;
+	}
+}
+
+
+
+
+
+
