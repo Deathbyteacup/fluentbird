@@ -1,6 +1,6 @@
 /* FLUENTBIRD - A FLUENT DESIGN THEME FOR THUNDERBIRD  */
 /*     Created by Danny King - www.dannyking.co.uk     */
-/*                   v1.1.4 RELEASE                    */
+/*                   v1.2.0 RELEASE                    */
 /*        DISTRIBUTED UNDER THE MIT LICENSE            */
 
 /* =====================================================
@@ -410,8 +410,11 @@ button .thread-replies {
 	display: none !important;
 }
 
-/* Subject indent for child rows with replies */
-tr.children .thread-card-button:has(.thread-replies[data-l10n-id]) ~ .thread-card-subject-container .subject {
+/* Subject indent for child rows with replies.
+   Group headers ("Today", "Past 7 days"...) are also tr.children, and their
+   recycled rows can keep a stale data-l10n-id on .thread-replies, which would
+   indent the header label. Headers are excluded so they can't pick this up. */
+tr.children:not([data-properties~="dummy"]) .thread-card-button:has(.thread-replies[data-l10n-id]) ~ .thread-card-subject-container .subject {
 	margin-left: 15px !important;
 }
 
@@ -508,9 +511,20 @@ tr.table-layout.selected.current {
 	margin-top: -15px;
 }
 
-/* Grouped-by-sort child rows */
+/* Grouped-by-sort header rows ("Today", "Past 7 days"...)
+   The header height lives in ONE variable and is applied as an explicit pixel
+   height to the row, the cell, the card and the inner row. Previously the
+   cell/card/inner row used "height: 100%", and percentage heights inside table
+   cells resolve differently on first layout than after a repaint — which is why
+   the card ended up taller than the 30px band (and overlapped by other rows),
+   and why extra padding showed after collapsing a group until the pane
+   redrew. */
+tree-view[data-show-grouped-by-sort="true"] {
+	--fb-group-header-height: 30px;
+}
+
 tree-view[data-show-grouped-by-sort="true"] .card-layout.children {
-	height: 30px !important;
+	height: var(--fb-group-header-height) !important;
 }
 
 tree-view[data-show-grouped-by-sort="true"] .card-layout.children *,
@@ -536,14 +550,39 @@ tree-view[data-show-grouped-by-sort="true"] .card-layout.children *:hover {
    flex-centered line so the twisty and label sit correctly at any row
    height (compact or cozy). */
 tree-view[data-show-grouped-by-sort="true"] tr.card-layout[data-properties~="dummy"] td {
-	height: 100% !important;
+	height: var(--fb-group-header-height) !important;
 }
 
 tree-view[data-show-grouped-by-sort="true"] tr.card-layout[data-properties~="dummy"] .card-container {
 	display: flex !important;
 	align-items: center !important;
-	height: 100% !important;
+	box-sizing: border-box !important;
+	height: var(--fb-group-header-height) !important;
+	min-height: 0 !important;
+	max-height: var(--fb-group-header-height) !important;
 }
+
+/* Thunderbird draws a thin divider (.card-container::after) between a
+   collapsed group header and the header right after it, whenever neither is
+   hovered/selected. It is absolutely positioned with no offsets, so its
+   position comes from the "static position" — and in the flex card above that
+   is vertically centred inside a card that used to be taller than the band,
+   which is what produced the stray line near the bottom of the header.
+
+   Default: hide the divider. */
+tree-view[data-show-grouped-by-sort="true"] tr.collapsed[data-properties~="dummy"] + tr[data-properties~="dummy"] .card-container::after {
+	display: none !important;
+}
+
+/* ALTERNATIVE — keep Thunderbird's divider but pin it to the top edge of the
+   header (where Thunderbird intends it). To use: delete the rule above and
+   uncomment this one.
+
+tree-view[data-show-grouped-by-sort="true"] tr.collapsed[data-properties~="dummy"] + tr[data-properties~="dummy"] .card-container::after {
+	inset-block-start: 0 !important;
+	inset-inline-start: 0 !important;
+}
+*/
 
 /* The sender/date line is empty on a header row; drop it so it stops
    pushing the twisty + label line down out of the visible 30px band */
@@ -554,13 +593,15 @@ tree-view[data-show-grouped-by-sort="true"] tr.card-layout[data-properties~="dum
 tree-view[data-show-grouped-by-sort="true"] tr.card-layout[data-properties~="dummy"] .thread-card-column:has(.thread-card-dynamic-row) {
 	display: flex !important;
 	align-items: center !important;
-	height: 100% !important;
+	box-sizing: border-box !important;
+	height: var(--fb-group-header-height) !important;
+	padding-block: 0 !important;
 }
 
 tree-view[data-show-grouped-by-sort="true"] tr.card-layout[data-properties~="dummy"] .thread-card-dynamic-row {
 	display: flex !important;
 	align-items: center !important;
-	height: 100% !important;
+	height: var(--fb-group-header-height) !important;
 	margin: 0 !important;
 	padding: 0 !important;
 }
