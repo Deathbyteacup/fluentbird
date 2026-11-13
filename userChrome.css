@@ -456,6 +456,39 @@ tr.card-layout[style*="height: 50px"] .sender {
 	margin-top: 5px !important;
 }
 
+/* ---- Unread messages (Outlook-style) -------------------------------------
+   Tint + left accent bar + bolder sender for unread mail. Driven by
+   Thunderbird's own "unread" property (not the "new" flag), so it survives
+   restarts and folder changes and clears as soon as a message is read.
+   Junk rows and group headers are excluded. Dark-mode colours are set in
+   the DARK MODE section below. To tune, change these three variables. */
+:root {
+	--fb-unread-bg: #eaf3fc;
+	--fb-unread-bar: #134e8f;
+	--fb-unread-sender-weight: 600;
+}
+
+/* Tint. This sets the variable Thunderbird paints cards with (rather than
+   background-color directly), and is kept at LOW specificity on purpose
+   (:where() adds none) so Thunderbird's hover / selected / focus states, and
+   the selected colours further down this file, still take over. */
+.card-layout[data-properties~="unread"]:where(:not([data-properties~="dummy"], [data-properties~="junk"])) {
+	--tree-card-background: var(--fb-unread-bg);
+}
+
+/* Left accent bar. An inset shadow rather than a border: no layout shift (read
+   and unread text stay aligned), follows the rounded corners, and is not
+   overwritten by the border rules used for selected/unfocused cards. */
+#threadTree[rows="thread-card"] .card-layout[data-properties~="unread"]:not([data-properties~="dummy"], [data-properties~="junk"]) .card-container {
+	box-shadow: inset 3px 0 0 var(--fb-unread-bar) !important;
+}
+
+/* Bolder sender for unread only — read rows keep the 500 weight set above.
+   The ID selector outranks both sender rules above, including the compact one. */
+#threadTree[rows="thread-card"] .card-layout[data-properties~="unread"] .sender {
+	font-weight: var(--fb-unread-sender-weight) !important;
+}
+
 /* Child thread subject font size */
 tr.card-layout.children span.subject {
 	font-size: 0.95em !important;
@@ -1078,6 +1111,13 @@ global-search-bar {
    ===================================================== */
 
 @media (prefers-color-scheme: dark) {
+
+	/* Unread messages: muted navy tint, brighter bar (the light-mode #134e8f
+	   is too dark to read against dark cards) */
+	:root {
+		--fb-unread-bg: #1d2f44;
+		--fb-unread-bar: #5aa4ef;
+	}
 
 	/* Custom maximise icon — dark (Windows only) */
 	@media (-moz-platform: windows) {
