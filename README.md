@@ -30,10 +30,15 @@ There may be some bugs and issues, specifically when using operating systems oth
 If reporting an issue, please use the report templates, including the OS and version you're using, the version of Thunderbird, and any specific settings related to the bug. 
 Thanks!
 
-1.1.4 Release Notes
+1.2.0 Release Notes
 --------
-- Fixes missing search folder icons with a new fluent icon
-- Fixes missing "twisty" icons on date sort headers
+- Fixed: removed the stray line between adjacent collapsed group headers (e.g. "Today" and "Past 7 days")
+- Fixed: extra padding no longer appears under the next group after collapsing one
+- Fixed: the group header card no longer grows taller than its 30px band and gets overlaid by other rows
+- Fixed: group headers are excluded from the "subject indent for rows with replies" rule, so a recycled row can no longer indent a header label
+- Fixed: unread senders names now appear bold on the mail card
+- Added: unread messages have a light blue background that persists across restarts and folder changes and clears when the message is read
+- Added: unread messages have a new left accent color
 
 Credits
 --------
